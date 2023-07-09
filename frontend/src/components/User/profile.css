@@ -1,0 +1,109 @@
+.profile{
+  width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+
+}
+.profile::-webkit-scrollbar{
+    width: 0;
+}
+.profile .first{
+    
+    height: 30%;
+
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    gap: 30px;
+    padding: 40px;
+}
+.first .me{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.first .about{
+    display: flex;
+    gap: 20px;
+}
+.first .details{
+    display: flex;
+    gap: 20px;
+}
+.details p{
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+.details button{
+    background: black;
+    width: 100px;
+    border: none;
+    font-family: sans-serif;
+    font-weight: 400;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+.details .f-btn{
+    background: rgb(12, 118, 218);
+    width: 100px;
+    height: 25px;
+    border: none;
+    font-family: sans-serif;
+    font-weight: 400;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+.about p{
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+}
+.myfile {
+    /* width: 0.1px;
+    height: 0.1px;
+    opacity: 0; */
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.first img{
+    
+        border-radius: 50%;
+        width: 190px;
+        height: 190px;
+        background-size: cover;
+        image-rendering: -webkit-optimize-contrast;
+ }
+ .profile .post-cards{
+    margin: 0;
+    width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+ }
+ .profile .post-card{
+    padding: 5px;
+ }
+ .post-cards .post-card img{
+    width: 360px;
+    height: 250px;
+
+    image-rendering: -webkit-optimize-contrast;
+
+ }
+ 
+ /* .first .myfile + img {
+   
+    border-radius: 3px;
+    background-color: rgb(43, 106, 223);
+    display: inline-block;
+}
+
+.first .myfile:focus + img,
+.myfile + img:hover {
+    background-color:rgb(43, 106, 223);
+}  */

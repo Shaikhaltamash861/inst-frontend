@@ -1,0 +1,80 @@
+.searchbar{
+    width: 100%;
+    font-family: sans-serif;
+    position: relative;
+    border: 1px solid gray;
+}
+.searchbar .search{
+    height: 150px;
+
+    background: white;
+}
+.recent-list{
+    height: 500px;
+
+    overflow-y: scroll;
+}
+.recent-list::-webkit-scrollbar{
+    width: 0;
+}
+.accounts{
+   
+}
+.search h2{
+    padding: 30px 30px 30px 20px;
+}
+.search input{
+    width: 83%;
+    height: 43px;
+    outline: none;
+    margin-left: 20px;
+    text-indent: 4px;
+    border-radius: 5px;
+    display: inline-block;
+    
+}
+.accounts h3{
+    padding: 20px;
+}
+.accounts .users{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    cursor: pointer;
+    height: 15px;
+    background: #e7e5e5;
+
+    /* border: 1px solid #535151; */
+    padding: 20px;
+    margin-top: 4px;
+}
+.users .user{
+    padding-left: 5px;
+    padding-top: 4px;
+}
+.user .user-name{
+    font-weight: 700;
+    font-size: 12px;
+    color: #5c5959;
+}
+.user .user-id{
+    font-weight: 700;
+    font-size: 15px;
+    color: #484545;
+}
+.users img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.search-btn{
+    width: 40px;
+    margin-left: 2px;
+    background: rgb(12, 118, 218);
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    height: 44px;
+}
