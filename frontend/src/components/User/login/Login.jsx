@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { setUserLoginDetail } from '../../../reducers/userReducers'
 import { toast } from 'react-toastify'
+import url from '../../../routes/baseUrl'
 function Login() {
     const dispatch=useDispatch()
     const name=useSelector((state)=>state.user.name)
@@ -24,7 +25,7 @@ function Login() {
   }
     const handleLogin=async (e)=>{
         e.preventDefault()
-      const {data}  = await axios.post('http://localhost:8000/api/signin',
+      const {data}  = await axios.post(`${url}/api/signin`,
          {
           email:email,
           password:password

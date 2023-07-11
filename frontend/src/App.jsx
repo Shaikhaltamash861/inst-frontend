@@ -10,7 +10,7 @@ import Home from './components/Home/Home';
 import Messenger from './components/Home/messenger/Messenger';
 import Profile from './components/User/Profile';
 import { useDispatch, useSelector } from 'react-redux';
-import Private from './routes/Private';
+
 
 import { setUserLoginDetail } from './reducers/userReducers';
 import UserProfile from './components/Home/UserProfile';
