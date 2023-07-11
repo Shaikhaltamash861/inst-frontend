@@ -17,10 +17,11 @@ const postSlice=createSlice({
         state.myPost=action.payload.myPost
     },
     getUserPost:(state,action)=>{
+
         state.userPost=action.payload.userPost
     },
     setComments:(state,action)=>{
-        console.log(action)
+    
          state.commentDetail=action.payload.commentDetail
     }
     

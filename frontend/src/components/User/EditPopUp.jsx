@@ -80,10 +80,7 @@ function EditPopUp({open,setOpen}) {
   return (
     <div>
   <Dialog open={open}>
-  <div className={'dialog'} style={{
-            width:'400px',
-            height:'500px'
-           }}>
+  <div className={'dialog'} >
   <div className="title" style={{
       display:'flex',
       justifyContent:'end',

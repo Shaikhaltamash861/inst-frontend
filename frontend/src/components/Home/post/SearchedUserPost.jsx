@@ -8,6 +8,7 @@ export default function SearchedUserPost({user}) {
    console.log(post)
     const getPosts=async()=>{
         const {data}=await axios.get(`http://localhost:8000/api/posts?id=${user.id}`)
+        console.log(data)
            if(data){
     
              

@@ -79,61 +79,48 @@
         background-size: cover;
         image-rendering: -webkit-optimize-contrast;
  }
- @media screen and (max-width: 415px) {
-  .first{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .details{
-    flex-direction: column;
+ .details{
+     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  .details button{
+}
+.details button{
     height: 20px;
-  }
-  .first img{
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-  }
-  .first .me{
-    margin-top: -15px;
-  }
-  }
- .profile  .post-card-box{
-   
-   padding-left: 30px;
-   padding-right: 30px;
-   padding-top: 5px;
-   
+}
 
- }
- .profile .post-cards{
+.profile  .post-card-box{
+    
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    
+    
+}
+.profile .post-cards{
     margin: 0;
-    width:1120px;
+    /* width:1120px; */
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     /* justify-content: center; */
     /* display: grid;
     grid-template-columns: repeat(3,1fr); */
- }
- .profile .post-card{
- cursor: pointer;
+}
+.profile .post-card{
+    cursor: pointer;
     padding-top: 10px;
     padding-left: 4px;
- }
- .post-cards .post-card img{
+}
+.post-cards .post-card img{
     width: 345px;
     height: 350px;
-
+    
     image-rendering: -webkit-optimize-contrast;
+    
+}
 
- }
- 
- /* .first .myfile + img {
-   
+/* .first .myfile + img {
+    
     border-radius: 3px;
     background-color: rgb(43, 106, 223);
     display: inline-block;
@@ -143,3 +130,43 @@
 .myfile + img:hover {
     background-color:rgb(43, 106, 223);
 }  */
+@media screen and (max-width: 414px) {
+    .post-cards{
+      width: 100%;flex-direction: column;
+      display: flex;
+      
+      
+    }
+    .first{
+        display: flex;
+       flex-direction: column;
+       justify-content: center;
+    }
+    .first img{
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+      .first .me{
+        margin-top: -15px;
+      }
+.tag{
+    width: 0;
+}
+  .profile .post-cards {
+    margin: 0;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+.profile .post-card-box{
+   padding: 0;
+}
+.post-cards .post-card img {
+    width: 132px;
+    height: 140px;
+    image-rendering: -webkit-optimize-contrast;
+}
+}

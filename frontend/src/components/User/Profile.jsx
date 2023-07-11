@@ -8,8 +8,11 @@ import Follower from './friends/Follower'
 import Followings from './friends/Followings'
 import myFriends, { userFollowers, userFollowing } from '../../reducers/myFriends'
 import SearchedUserPost from '../Home/post/SearchedUserPost';
+import { setUserLogout } from '../../reducers/userReducers';
+import { useNavigate } from 'react-router-dom';
 // import { useSelector } from 'react-redux'
 function Profile() {
+  const navigate=useNavigate()
    const dispatch=useDispatch()
   const myProfile=useSelector((state)=>state.user)
   const myPost=useSelector((state)=>state.post)
@@ -68,7 +71,12 @@ function Profile() {
       getFollowers()
       setClose(!handleOpen)
     }
-    
+    const logOut=()=>{
+      dispatch(
+        setUserLogout()
+        )
+        navigate('/')
+    }
   return (
     <div className='main' style={{
       display:'flex'
@@ -89,7 +97,7 @@ function Profile() {
         </div>
 
         <div className='about'>
-          <p>{myProfile?.posts?.length}post</p>
+          <p onClick={logOut}>{myProfile?.posts?.length}post</p>
           <p  onClick={openFollower}>{myProfile?.followers?.length}followers</p>
           <p onClick={ handleOpenFollowing}>{myProfile?.following?.length}following</p>
         </div>

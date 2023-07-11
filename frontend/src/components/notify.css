@@ -1,6 +1,6 @@
 .dialog{
-    width: 480px;
-    height: 380px;
+    width: 400px;
+    height: 500px;
     background: rgb(73, 70, 70);
 }
 .bigDialog .title{
@@ -173,4 +173,11 @@ cursor: pointer;
 .back{
     display: flex;
     justify-content: end;
+}
+@media screen and (max-width: 415px){
+    .dialog{
+        width: 324px;
+        height: 520px;
+       
+    }
 }
