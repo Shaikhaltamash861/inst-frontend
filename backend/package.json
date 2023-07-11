@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "supervisor index.js",
-    "dev": "nodemon -L index.js "
+    "start": "node index.js",
+    "dev": "supervisor index.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
