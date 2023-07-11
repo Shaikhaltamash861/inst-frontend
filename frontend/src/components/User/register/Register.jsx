@@ -7,7 +7,7 @@ import avatar from '../../../assests/images/logos/avatar.png'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import { setUserLoginDetail } from '../../../reducers/userReducers'
-
+import url from '../../../routes/baseUrl';
 import { useDispatch } from 'react-redux';
 function Register() {
     const navigate=useNavigate()
@@ -16,10 +16,11 @@ function Register() {
     const  [name,setName]=useState('')
     const [username,setUserName]=useState('')
     const [password,setPassword]=useState('');
+    const [forget,setForget]=useState()
   
     const handleLogin=async(e)=>{
         e.preventDefault()
-        const {data}=await axios.post('http://localhost:8000/api/signup',{
+        const {data}=await axios.post(`${url}/api/signup`,{
           name:name,
           email:email,
           username:username,
@@ -92,13 +93,17 @@ function Register() {
                <div className='options'>
 
                 <div className='or'>OR</div>
-                <p onClick={()=>setForgot(!forgot)}> <Link to="/password/forgot">
+                <p onClick={()=>setForgot(!forgot)}> <Link style={{
+                  textDecoration:'none',
+                  color:'gray',
+                  fontWeight:'100'
+                }} to="/password/forgot">
                 Forgot Password ? </Link></p>
                </div>
 
             </div>
     <div className='box2'>
-            <p>Have already account ?  <Link to="/" ><span>Sign In</span></Link></p>
+            <p>Have already account ?  <Link to="/"  ><span>Sign In</span></Link></p>
         </div>
     </Auth>
     

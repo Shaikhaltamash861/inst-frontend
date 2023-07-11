@@ -13,3 +13,8 @@
     color:  rgb(76, 161, 240);
     cursor: pointer;
 }
+@media screen and (max-width: 415px){
+    .login-box p{
+       
+    }
+}

@@ -119,13 +119,14 @@
 }
     @media screen and (max-width: 415px){
         .card{
-            margin-left: -23px;
+            margin-left: -37px;
     }
     .card .account{
         width: 100%;
     }
     .card .post-img  {
-    
+        width: 384px;
+        height: 500px;
     }
 
 }

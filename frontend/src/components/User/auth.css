@@ -50,8 +50,9 @@ html,body{
 }
 .options p{
     color:  rgb(76, 161, 240);
-    font-size: 15px;
+    font-size: 13px;
     font-weight:700;
+    padding-top: 17px;
     cursor: pointer;
     text-decoration: none;
 }
@@ -135,5 +136,8 @@ html,body{
     }
     .login-img{
         display: none;
+    }
+    .box2{
+        border: none;
     }
   }

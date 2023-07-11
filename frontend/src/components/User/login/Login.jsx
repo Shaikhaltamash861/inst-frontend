@@ -74,13 +74,18 @@ function Login() {
                <div className='options'>
 
                 <div className='or'>OR</div>
-                <p onClick={()=>setForgot(!forgot)}> <Link to="/password/forgot">
+                <p onClick={()=>setForgot(!forgot)}> <Link style={{
+                  textDecoration:'none',
+                  color:'gray',
+                  fontWeight:'100'
+                }}
+                 to="/password/forgot">
                 Forgot Password ? </Link></p>
                </div>
 
             </div>
             <div className='box2'>
-            <p>Don't have any account ?  <Link to="/register" ><span>Sign Up</span></Link></p>
+            <p>Don't have any accounts ?  <Link to="/register" ><span>Sign Up</span></Link></p>
         </div>
     </Auth>
     </>
