@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import EditPopUp from './EditPopUp'
 import Follower from './friends/Follower'
 import Followings from './friends/Followings'
-import { userFollowers, userFollowing } from '../../reducers/myFriends'
+import myFriends, { userFollowers, userFollowing } from '../../reducers/myFriends'
+import SearchedUserPost from '../Home/post/SearchedUserPost';
 // import { useSelector } from 'react-redux'
 function Profile() {
    const dispatch=useDispatch()
   const myProfile=useSelector((state)=>state.user)
   const myPost=useSelector((state)=>state.post)
+  console.log(myPost)
   const [handleOpen,setHandleOpen]=useState(false)
   const [close, setClose]=useState(false)
   const [open,setOpen]=useState(false)
@@ -93,19 +95,19 @@ function Profile() {
         </div>
         </div>
       </div>
-      <div className='post-cards'>
-
-      {
+      <div className='post-card-box'>
+        <SearchedUserPost user={myProfile}/>
+            
+      {/* {
         myPost?.myPost?.map((val)=>(
           
           <div className='post-card' key={val._id}>
           <img src={val.image} />
-      </div>
-        ))
-      }
-      
+          </div>
+          ))
+        } */}
     
-      </div>
+        </div>
     </div>
     <EditPopUp open={open} setOpen={setOpen}/>
     <Follower open={close} setOpen={setClose}/>

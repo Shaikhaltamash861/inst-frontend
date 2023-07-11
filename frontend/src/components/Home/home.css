@@ -6,12 +6,19 @@
     overflow: hidden;
 }
 .container .leftbar{
-    flex: 10%;
+    /* flex: 10%; */
 }
 .container .rightbar{
-    flex: 70%;
-    width: 100%;
+    /* display: flex;
+    justify-content: start;
     border:1px solid rgb(179, 179, 179);;
     border-left: none;
-    
+     */
+}
+@media screen and (max-width: 415px) {
+ .leftbar{
+    position: fixed;
+    bottom: 0;
+ }
+
 }

@@ -10,7 +10,7 @@
 }
 .profile .first{
     
-    height: 30%;
+    
 
     display: flex;
     align-items: center;
@@ -79,18 +79,54 @@
         background-size: cover;
         image-rendering: -webkit-optimize-contrast;
  }
+ @media screen and (max-width: 415px) {
+  .first{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .details{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .details button{
+    height: 20px;
+  }
+  .first img{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+  }
+  .first .me{
+    margin-top: -15px;
+  }
+  }
+ .profile  .post-card-box{
+   
+   padding-left: 30px;
+   padding-right: 30px;
+   padding-top: 5px;
+   
+
+ }
  .profile .post-cards{
     margin: 0;
-    width: 1000px;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
+    width:1120px;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    /* display: grid;
+    grid-template-columns: repeat(3,1fr); */
  }
  .profile .post-card{
-    padding: 5px;
+ cursor: pointer;
+    padding-top: 10px;
+    padding-left: 4px;
  }
  .post-cards .post-card img{
-    width: 360px;
-    height: 250px;
+    width: 345px;
+    height: 350px;
 
     image-rendering: -webkit-optimize-contrast;
 

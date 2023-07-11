@@ -3,7 +3,8 @@ import {createSlice} from '@reduxjs/toolkit'
 
 const initialState={
     myPost:[],
-    userPost:[]
+    userPost:[],
+    commentDetail:[]
      
 }
 
@@ -17,12 +18,17 @@ const postSlice=createSlice({
     },
     getUserPost:(state,action)=>{
         state.userPost=action.payload.userPost
+    },
+    setComments:(state,action)=>{
+        console.log(action)
+         state.commentDetail=action.payload.commentDetail
     }
+    
    
   
 
 }
 })
 
- export const {getMyPost,getUserPost}=postSlice.actions;
+ export const {getMyPost,getUserPost,setComments}=postSlice.actions;
  export default postSlice.reducer;

@@ -25,33 +25,33 @@
         display: inline-block;
         padding-left: 0;
         /* padding-left: 6px; */
-    
-}
-.card .account .timeago{
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-    font-weight: 400;
-    font-family: sans-serif;
-    color: #353434;
-}
-.card .account p{
-    font-weight: 700;
-    font-size: 15px;
-    color:black;
-    font-family: sans-serif;
-    padding-left: 10px;
-}
-.account .image{
-
-    width: 52px;
-    height: 52px;
-    /* border: 2px solid rgb(60, 61, 61); */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    background: y;
-    justify-content: center;
+        
+    }
+    .card .account .timeago{
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        font-weight: 400;
+        font-family: sans-serif;
+        color: #353434;
+    }
+    .card .account p{
+        font-weight: 700;
+        font-size: 15px;
+        color:black;
+        font-family: sans-serif;
+        padding-left: 10px;
+    }
+    .account .image{
+        
+        width: 52px;
+        height: 52px;
+        /* border: 2px solid rgb(60, 61, 61); */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        background: y;
+        justify-content: center;
 }
 .card .account img{
     width: 49px;
@@ -63,14 +63,14 @@
 .card .post-img {
     width: 390px;
     height: 500px;
-
+    
 }
 .card .post-img img{
     width: 100%;
     height: 100%;
     image-rendering: -webkit-optimize-contrast;
     image-resolution: 300dpi;
-
+    
 }
 .card .others{
     padding-top: 6px;
@@ -83,17 +83,17 @@
     
     cursor: pointer;
     color: #ff0707;
-
+    
 }
 .others .material:first-child:active{
     
     position: relative;
     color: red;
     
-
+    
 }
 .add-comment{
-    padding-top: 15px;
+    padding-top: 1px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -105,8 +105,8 @@
     border-bottom: none;
     height: 30px;
     outline: none;
-
-
+    
+    
 }
 .add-comment button{
     border: none;
@@ -116,4 +116,16 @@
     cursor: pointer;
     font-family: sans-serif;
     font-weight: 600;
+}
+    @media screen and (max-width: 415px){
+        .card{
+            margin-left: -23px;
+    }
+    .card .account{
+        width: 100%;
+    }
+    .card .post-img  {
+    
+    }
+
 }

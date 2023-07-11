@@ -19,6 +19,7 @@ import { setUserLogout } from '../../../reducers/userReducers';
 import ConfirmNotification from '../../Notification';
 import { useEffect } from 'react';
 import SearchBar from '../search/SearchBar';
+import Banner from '../../User/dropDown/Banner';
 function Sidebar({reduce}) {
   const navigate=useNavigate();
   const dispatch=useDispatch()
@@ -27,11 +28,22 @@ function Sidebar({reduce}) {
   const [searchInput,setSearchInput]=useState(false)
   const [open,setOpen]=useState(false)
   const [layout,setLayout]=useState(true)
-         
+  const [openSetting,setOpenSetting]=useState(false)       
   const user=useSelector((state)=>state.user)
   const username=user.username
   const myImg=user.avatar;
-  
+  const handleScreen=()=>{
+
+    console.log(window.innerWidth)
+    if(window.innerWidth<780){
+      setLayout(false)
+    }
+    else{
+      setLayout(true)
+    }
+  }
+  window.addEventListener('resize',handleScreen)
+
   const logOut=()=>{
     dispatch(setUserLogout())
   }
@@ -106,8 +118,15 @@ function Sidebar({reduce}) {
         </ul>
         < ConfirmNotification open={open} setOpen={setOpen}/>
          
-        <div className='menu'>
+        <div className='menu' onClick={()=>setOpenSetting(!openSetting)} >
+          {/* <p>LogOut</p> */}
           <MenuIcon className='m'/> <h3>More</h3>
+          {/* {
+            openSetting?(
+
+              <Banner/>
+            ):(<></>)
+          } */}
         </div>
         </div>
         {

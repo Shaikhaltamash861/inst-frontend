@@ -1,0 +1,111 @@
+.box{
+
+    /* height: 600px; */
+    /* background: rgb(112, 112, 112); */
+    width: 100%;
+}
+.box .nav{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+    padding-right: 4px;
+    cursor: pointer;
+    /* background: red; */
+}
+.box .childs{
+    display: flex;
+}
+.box .left-img{
+    
+    width: 50%;
+}
+.box .left-img img{
+    width: 450px;
+    height:547px ;
+}
+.box .right-user{
+    width: 100%;
+    border: 1px solid rgb(228, 228, 228);
+    /* background: red; */
+}
+
+.box .right-user .user-detail{
+    
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+.box .right-user .user-detail p{
+    padding-left: 10px;
+    font-family: sans-serif;
+    font-weight:600;
+    font-size: 14px;
+}
+.right-user .user{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    
+}
+.right-user .user .username{
+    margin-left: 5px;
+    font-family: sans-serif;
+    font-weight:600;
+    font-size: 14px;
+}
+.right-user .user .caption{
+    font-family: sans-serif;
+    font-size: 13px;
+    padding-left: 10px;
+}
+.right-user .user img{
+    margin-left: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; 
+}
+.box .right-user .user-detail img{
+    /* padding-left: 10px; */
+    margin-left: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+ 
+}
+.box .right-user .comments{
+    overflow-y: scroll;
+    
+    height: 445px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+
+}
+.box .right-user .comments::-webkit-scrollbar{
+    width: 0;
+}
+.box .right-user .comment{
+    position: fixed;
+    bottom: 35px;
+    display: flex;
+    
+    
+}
+.comment input{
+    width: 400px;
+    height: 50px;
+    outline: none;
+    border: none;
+    text-indent: 20px;
+    
+}
+.comment button{
+    background: none;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(4, 106, 223);
+}
+.right-user .all-comments{
+  margin-top: 20px;
+}
