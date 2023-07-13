@@ -12,6 +12,7 @@ import { userFollowers, userFollowing } from '../../reducers/friendsSlice'
 import Following from './Following'
 import SearchedUserPost from './post/SearchedUserPost'
 import { searchedUser } from '../../actions/postAction'
+import url from '../../routes/baseUrl'
 // import { useSelector } from 'react-redux'
 function UserProfile() {
   const dispatch=useDispatch()
@@ -38,7 +39,7 @@ function UserProfile() {
       myId:id,
       yourId:myProfile.id
     }
-    const {data}=await axios.post('http://localhost:8000/api/follow/user'
+    const {data}=await axios.post(`${url}/api/follow/user`
     ,ids
     )
   if(data.success){
@@ -55,7 +56,7 @@ function UserProfile() {
     const getFollowers=async()=>{
       
       
-      const {data}= await axios.post('http://localhost:8000/api/get/followers',
+      const {data}= await axios.post(`${url}/api/get/followers`,
       {
         id:user.id
       }
@@ -75,7 +76,7 @@ function UserProfile() {
    const getFollowing=async()=>{
  
      
-     const {data}= await axios.post('http://localhost:8000/api/get/following',
+     const {data}= await axios.post(`${url}/api/get/following`,
      {
        id:user.id
       }

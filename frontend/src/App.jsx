@@ -1,5 +1,5 @@
 import { Profiler, useState,useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation ,useParams } from 'react-router-dom';
 import './App.css'
 import Login from './components/User/login/Login'
 import Register from './components/User/register/Register';
@@ -15,7 +15,8 @@ import UserProfile from './components/Home/UserProfile';
 import SearchBar from './components/Home/search/SearchBar';
 
 function App() {
-
+   const {userId}=useParams()
+   console.log(userId)
   const dispatch=useDispatch()
   let username=useSelector((state)=>state.user.username)
   
@@ -42,7 +43,7 @@ function App() {
      <Route path="/direct/inbox" element={<Messenger/>} />
 
      <Route exact path="/profile" element={ username && <Profile />} />
-     <Route path="/:username" element={ <UserProfile/>} />
+     <Route path=":username" element={ <UserProfile/>} />
         
      </Routes>
        
