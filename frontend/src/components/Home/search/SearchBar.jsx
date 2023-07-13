@@ -117,7 +117,7 @@ function SearchBar() {
               accounts?(<>
 
                 {
-                  recent.map((user,idx)=>(
+                  recent?.map((user,idx)=>(
                     
                     
                     <div className='users' key={idx} onClick={()=>navigator(user?.username,user)}>
