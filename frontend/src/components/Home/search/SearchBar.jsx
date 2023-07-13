@@ -9,29 +9,38 @@ import {
   Typography,
   Button,
 } from "@mui/material";
+import arrow from '../../../assests/icons/arrow.png'
 import { useNavigate } from 'react-router-dom';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import axios from 'axios'
 import fakeImg from '../../../assests/icons/dummy.png'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateList } from '../../../reducers/searchSlice';
+import Sidebar from '../sidebar/Sidebar';
+import { setRecent } from '../../../reducers/userReducers';
+import url from '../../../routes/baseUrl';
 function SearchBar() {
   const dispatch=useDispatch()
-  
+  const recent =useSelector((state)=>state.user.users)
   const navigate=useNavigate()
+
   const [accounts,setAccount]=useState([])
   
   const [query,setQuery]=useState('')
   const getUserByUserName=async(e)=>{
-    e.preventDefault()
-    const {data}=await axios.post('http://localhost:8000/api/retrive/user',{
+   
+    const {data}=await axios.post(`${url}/api/retrive/user`,{
       query
     })
     if(data.success){
 
       
       setAccount(data.users)
+      dispatch(setRecent({
+        users:data.users
+      }))
       console.log(data.users)
+    
   
     }
 
@@ -57,14 +66,29 @@ function SearchBar() {
     //  navigate(path)
     }
  }
+  const clearAll=()=>{
+    dispatch(setRecent({
+      users:[]
+    }))
+  }
 
   return (
     
+    <div className='container'>
+        <div className="leftbar" >
+    <Sidebar />
 
+        </div>
+        <div className="rightbar">
+
+    
     <div className='searchbar'>
         <div className='search'>
+          <div className='back-btn' >
 
-            <h2 >Search</h2>
+          <img onClick={()=>navigate('/')} src={arrow}/>
+            <h2  >Search</h2>
+            </div>
             <div style={{
               display:'flex'
             }}>
@@ -75,24 +99,36 @@ function SearchBar() {
         </div>
            <hr/>
         <div className='accounts'>
+          <div className='recent-nav' style={{
+            display:'flex',
+            justifyContent:'space-between',
+            alignItems:'center',
+            marginRight:'6px'
+          }}>
+
           <h3>Recent</h3>
+          <p style={{
+            color:'#0171e9',
+            cursor:'pointer'
+          }} onClick={clearAll} >clear all</p>
+          </div>
           <div className='recent-list'>
             {
               accounts?(<>
 
                 {
-                  accounts.map((user,idx)=>(
+                  recent.map((user,idx)=>(
                     
                     
-        <div className='users' key={idx} onClick={()=>navigator(user?.username,user)}>
-          {
-            user?.avatar=='i am image'?(
-              <img src={fakeImg}/>
-              ):(
-
-                <img src={user?.avatar}/>
-                )
-              }
+                    <div className='users' key={idx} onClick={()=>navigator(user?.username,user)}>
+                      {
+                        user?.avatar=='i am image'?(
+                          <img src={fakeImg}/>
+                          ):(
+                            
+                            <img src={user?.avatar}/>
+                            )
+                          }
               <div className='user'>
               <p className='user-id'>{user.username}</p>
               <p className='user-name'>{user.name}</p>
@@ -111,6 +147,9 @@ function SearchBar() {
         </div>
           </div>
           </div>
+          
+          </div>
+      </div>
           
   )
 }

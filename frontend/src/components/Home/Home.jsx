@@ -2,6 +2,7 @@ import React from 'react'
 import Sidebar from './sidebar/Sidebar'
 import Main from './MainPost/Main'
 import './home.css'
+import Suggestion from '../User/suggetion/Suggestion'
 
 function Home({username}) {
   return (
@@ -13,6 +14,7 @@ function Home({username}) {
         <div className="rightbar">
 
     <Main />
+    <Suggestion/>
         </div>
     </div>
   )

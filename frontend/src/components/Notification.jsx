@@ -8,6 +8,7 @@ import {
   } from "@mui/material";
   import FileBase64 from 'react-file-base64';
   import axios from "axios";
+  import image from '../assests/icons/image.png'
   import KeyboardBackspaceSharpIcon from '@mui/icons-material/KeyboardBackspaceSharp';
   import CollectionsOutlinedIcon from '@mui/icons-material/CollectionsOutlined';
   import { addNewPost } from "../actions/postAction";
@@ -16,11 +17,13 @@ import {
   import { useDispatch, useSelector } from "react-redux";
   import {Cloudinary} from "@cloudinary/url-gen";
   import { ToastContainer, toast } from 'react-toastify';
-
+  import CircularProgress from '@mui/material/CircularProgress';
+  import Box from '@mui/material/Box';
   const cld = new Cloudinary({cloud: {cloudName: 'dwtnjp4gb'}});
 
 import { useState } from "react";
 import { getMyPost } from "../reducers/postReducer";
+import url from "../routes/baseUrl";
 
   const ConfirmNotification = ({open,setOpen}) => {
   
@@ -29,7 +32,7 @@ import { getMyPost } from "../reducers/postReducer";
    const _id= useSelector((state)=>state.user.id)
   
     const [item,setItem]=useState();
-    const [items,setItems]=useState();
+    const [items,setItems]=useState(true);
     const [caption,setCaption]=useState('')
     const [postImage,setPostImage]=useState()
     const handleChange = (e) => {
@@ -45,7 +48,7 @@ import { getMyPost } from "../reducers/postReducer";
     }
 
     const sendPost= async(e)=>{
-
+          setItems(false)
       const formdata=new FormData();
       
       formdata.append('file',postImage)
@@ -57,7 +60,7 @@ import { getMyPost } from "../reducers/postReducer";
       const {data}= await axios.post(uri,formdata)
       if(data.url){
        
-        const response=await axios.post('http://localhost:8000/api/post',{
+        const response=await axios.post(`${url}/api/post`,{
           image:data.url,
           caption:caption,
           id:_id
@@ -67,6 +70,7 @@ import { getMyPost } from "../reducers/postReducer";
           console.log(response.data.post)
           setOpen(!open)
           toast.success('successfully uploaded')
+          setItems(true)
         
         }
         else{
@@ -98,19 +102,36 @@ return (
               
              <div className="title">
               <p onClick={()=>setOpen(!open)} >
-                <KeyboardBackspaceSharpIcon onClick={()=>setItem('')}/>
+                <KeyboardBackspaceSharpIcon style={{ color:'black' }} onClick={()=>setItem('')}/>
               </p>
-                <p onClick={sendPost}>Create new post</p>
+                {/* <p onClick={sendPost}>Create new post</p> */}
               
                 {
                   item?(
 
-                 <span className="share">
-                  <p onClick={sendPost}>
+              
+                  <p className="share" onClick={sendPost}>
+                      {
+                        items?(
+                          <>
+                          Share
+                          </>
+                        ):(
 
-                  Share
+                       <Box sx={{     top: 0,
+                        left: 0,
+                        bottom: 0,
+                        right: 0,
+                        position: 'absolute',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center', }}>
+                      <CircularProgress />
+                      </Box>
+                        )
+                      }
                   </p>
-                  </span>
+                
                   ):(<></>)
                 }
              </div>
@@ -118,12 +139,13 @@ return (
            <div className="content">
             {
               item?
-              <div className="box">
+              <div className="boxx">
                  <div className="left">
                   <img className="img" src={ URL.createObjectURL(item)}/>
 
                  </div>
                  <div className="right">
+                  {/* <p></p> */}
                     <input type="textarea" placeholder="Write somethong..." value={caption} onChange={(e)=>setCaption(e.target.value)}  />
                  </div>
               
@@ -131,8 +153,14 @@ return (
               :
               <> 
 
-            <CollectionsOutlinedIcon className="gall" style={{
+            {/* <CollectionsOutlinedIcon className="gall" style={{
               width:'100px',
+              fontSize:'100px',
+              paddingBottom:'20px'
+            }}/> */}
+             <img src={image} className="gall" style={{
+              width:'100px',
+              height:'100px',
               fontSize:'100px',
               paddingBottom:'20px'
             }}/>

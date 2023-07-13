@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from '../Home/sidebar/Sidebar'
 import './profile.css'
 import axios from 'axios'
+import MenuIcon from '@mui/icons-material/Menu';
 import { useDispatch, useSelector } from "react-redux";
 import EditPopUp from './EditPopUp'
 import Follower from './friends/Follower'
@@ -10,22 +11,24 @@ import myFriends, { userFollowers, userFollowing } from '../../reducers/myFriend
 import SearchedUserPost from '../Home/post/SearchedUserPost';
 import { setUserLogout } from '../../reducers/userReducers';
 import { useNavigate } from 'react-router-dom';
+import Nav from '../mobile/Nav';
+import { SwipeableDrawer } from '@mui/material';
+import url from '../../routes/baseUrl';
 // import { useSelector } from 'react-redux'
 function Profile() {
   const navigate=useNavigate()
    const dispatch=useDispatch()
   const myProfile=useSelector((state)=>state.user)
   const myPost=useSelector((state)=>state.post)
-  console.log(myPost)
   const [handleOpen,setHandleOpen]=useState(false)
   const [close, setClose]=useState(false)
   const [open,setOpen]=useState(false)
-
+  const [drower,setDrower]=useState(false)
   
  const getFollowers=async()=>{
       
       
-      const {data}= await axios.post('http://localhost:8000/api/get/followers',
+      const {data}= await axios.post(`${url}/api/get/followers`,
       {
         id:myProfile.id
       }
@@ -45,7 +48,7 @@ function Profile() {
    const getFollowing=async()=>{
  
      
-     const {data}= await axios.post('http://localhost:8000/api/get/following',
+     const {data}= await axios.post(`${url}/api/get/following`,
      {
        id:myProfile.id
       }
@@ -77,11 +80,33 @@ function Profile() {
         )
         navigate('/')
     }
+    
   return (
+    <>
+      <Nav>
+         <MenuIcon onClick={()=>setDrower(!drower)}/>
+         <SwipeableDrawer open={drower} onClose={()=>setDrower(false)}
+        anchor='bottom'  disableSwipeToOpen={true} >
+              <div className='drawer'>
+                <ul >
+                  <li>Setting and privacy</li>
+                  <li> Your activity</li>
+                  <li>Saved</li>
+                  <li>Close Friends</li>
+                  <li>change theme</li>
+                  <li style={{
+                    color:'red'
+                  }} onClick={logOut} >Logout</li>
+                </ul>
+              </div>
+         </SwipeableDrawer>
+      </Nav>
     <div className='main' style={{
       display:'flex'
     }} >
+   {/* <div className='layout'> */}
    <Sidebar/>
+
     <div className='profile'>
       <div className='first'>
         <div className='image'>
@@ -97,7 +122,7 @@ function Profile() {
         </div>
 
         <div className='about'>
-          <p onClick={logOut}>{myProfile?.posts?.length}post</p>
+          <p >{myProfile?.posts?.length}post</p>
           <p  onClick={openFollower}>{myProfile?.followers?.length}followers</p>
           <p onClick={ handleOpenFollowing}>{myProfile?.following?.length}following</p>
         </div>
@@ -121,6 +146,8 @@ function Profile() {
     <Follower open={close} setOpen={setClose}/>
     <Followings  open={handleOpen} setOpen={setHandleOpen}/>
           </div>
+   {/* </div> */}
+          // </>
   )
 }
 

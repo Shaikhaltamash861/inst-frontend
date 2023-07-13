@@ -127,9 +127,9 @@ const getFollowing=async(req,res)=>{
 const getUserById=async(req,res)=>{
     
     const {_id}=req.query;
-    const user = await User.findById({_id});
-
+    
     try {
+        const user = await User.findById({_id});
         res.status(200).json(user)
     } catch (error) {
         console.log(error)

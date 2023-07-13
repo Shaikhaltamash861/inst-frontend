@@ -6,6 +6,8 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMyPost } from '../../../reducers/postReducer'
 import { setPostOfFloowing } from '../../../reducers/userReducers'
+import Nav from '../../mobile/Nav'
+import url from '../../../routes/baseUrl'
 function Main() {
   const dispatch=useDispatch()
   const [posts,setPost]=useState([])
@@ -14,7 +16,7 @@ const id=useSelector((state)=>state.user.id)
 const post=useSelector((state)=>state.user.myFollowingPost)
   
   const getPosts=async()=>{
-    const {data}=await axios.post(`http://localhost:8000/api/get/posts/following`,{
+    const {data}=await axios.post(`${url}/api/get/posts/following`,{
       id:id
     })
        if(data){
@@ -33,6 +35,7 @@ const post=useSelector((state)=>state.user.myFollowingPost)
   
   return (
     <div className='post-section'>
+      <Nav/>
       <div className='story'>
         <Story/>
 

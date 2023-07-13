@@ -2,21 +2,24 @@ import { Dialog } from "@mui/material";
 import './dialog.css'
 import ClearIcon from '@mui/icons-material/Clear';
 import React, { useState } from 'react'
+import { setComments } from '../../../reducers/postReducer'
 import Comment from "./Comment";
-function PostDialog({open,setOpen,user,post}) {
-  const [comment,setComment]=useState()
-  console.log('comment')
+import axios from "axios";
+
+function PostDialog({open,setOpen,user,post,hitComment}) {
+
   
+const [comment,setComment]=useState('')
   return (
     <div>
-        <Dialog open={open}  fullWidth='700px' maxWidth='md' >
+        <Dialog open={open}   >
             <div className="box">
-                 <div className="nav" >
+                 <div className="navs" >
                     <p onClick={()=>setOpen(!open)}><ClearIcon/> </p>
                  </div>
                  <div className="childs">
 
-            <div className="left-img">
+            <div  className="left-img">
                 <img src={post?.image}/>
             </div>
             <div className="right-user">
@@ -34,14 +37,22 @@ function PostDialog({open,setOpen,user,post}) {
                >{user.username}</p>
                   <p className="caption">{post?.caption}</p>
               </div>
-              <div className="all-comments">
 
                {
                  open?(
-                   <Comment postId={post._id}/>
+                <>
+                   {
+                     post?.comments?.map((commet)=>(
+                       
+                       <div className="user">
+                          <Comment userId={commet.user} comment={commet.comment}/>
+                          </div>
+                        ))
+                      }
+                      </>
+          
                    ):(<></>)
                   }
-                  </div>
               </div>
               <div className="comment">
         
@@ -52,7 +63,7 @@ function PostDialog({open,setOpen,user,post}) {
           {
             comment?(
 
-              <button >Post</button>
+              <button onClick={()=>hitComment(comment)} >Post</button>
             ):(
               <></> 
             )

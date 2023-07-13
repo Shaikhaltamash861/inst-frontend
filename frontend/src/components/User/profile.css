@@ -112,7 +112,7 @@
     padding-left: 4px;
 }
 .post-cards .post-card img{
-    width: 345px;
+    width: 338px;
     height: 350px;
     
     image-rendering: -webkit-optimize-contrast;
@@ -130,6 +130,22 @@
 .myfile + img:hover {
     background-color:rgb(43, 106, 223);
 }  */
+.drawer{
+    
+    height: 50vh;
+}
+.drawer ul{
+    padding-left: 20px;
+    padding-top: 10px;
+    list-style: none;
+    font-family: sans-serif;
+    font-size: 17px;
+
+}
+.drawer ul li{
+    padding-top: 28px;
+    cursor: pointer;
+}
 @media screen and (max-width: 414px) {
     .post-cards{
       width: 100%;flex-direction: column;

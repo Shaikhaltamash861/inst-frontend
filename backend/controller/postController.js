@@ -87,9 +87,10 @@ const result = await Post.aggregate([
 }
  const whoCommented=async(req,res)=>{
      console.log(req.body)
-     const response =await Post.findById({_id:req.body.postId}).select('comments')
-     
+     const response=await Post.findById({_id:req.body.postId}).select('comments.user')
      const commentUser=response.comments.map((id)=>id.user)
+    //  const user=await User.findById({_})
+    console.log(commentUser)
      try {
          
          const result = await Post.aggregate([
@@ -104,84 +105,13 @@ const result = await Post.aggregate([
                         as: 'bucket'
                     },
                 },
-                {
-                    $addFields: {
-                      comments: {
-                        $map: {
-                            input: "$comments",
-                          as: "comment",
-                          in: {
-                            comment: "$$comment.comment",
-                            userId: "$$comment.userId",
-                            userDetail: { $arrayElemAt: ["$bucket", { $indexOfArray: ["$comments.user", "$$comment.user"] }] }
-                          }
-                        }
-                      }
-                    }
-                  }
-                  // {
-                    //     $addFields: {
-                        //       "comments.bucket": { $arrayElemAt: ["$bucket._id", 0] } // Store the user details within the comments object
-                    //     }
-                    //     ,
-                    //   },
-                    //   {
-                        //     $group: {
-                            //       _id: "$_id",
-                            //       comments: { $push: "$bucket" }, // Group the comments back into an array
-                            //       // Include other fields from the posts collection if needed
-                    //     }
-                    //   }
-                    // },{  
-                        //     $addFields: {
-                            //         "comments.name": {
-                //             $arrayElemAt:["$bucket.username",]
-                //         }  // Field you want to add within the nestedField
-                //       }
-                // KAAM KIS CHEEZ HAI
-                //    {
-
-                    //        $set: {
-                        //            bucket: { $arrayElemAt: ["$bucket.name", 0] }
-                        //         }
-                        //     }
+               
+                 
                         
-                        ,{
-                            $project:{
-                                
-            
-                        likes:0,
-                        savedBy:0,
-                        createdAt:0,
-                        __v:0,
-                        
-                        'comments.userDetail.following':0,
-                        'comments.userDetail.password':0,
-                        'comments.userDetail.name':0,
-                        'comments.userDetail.bio':0,
-                        'comments.userDetail.posts':0,
-                        'comments.userDetail.saved':0,
-                        'comments.userDetail.followers':0,
-                        'comments.userDetail.email':0,
-                        'bucket':0
-                        // 'bucket.following':0,
-                        
-                        // 'bucket.password':0,
-                        // 'bucket.name':0,
-                        // 'bucket.bio':0,
-                        // 'bucket.posts':0,
-                        // 'bucket.saved':0,
-                        // 'bucket.followers':0,
-                        // 'bucket.__v':0
-                        
-                    }
-                }
+                    
+                
             ])
-            const post=result.find((post)=>post._id==req.body.postId)
-            if(post){
-
-                res.status(200).json({message:post,success:true})
-            }
+           res.send(result)
         } catch (error) {
             res.status(201).json({message:error,success:false})
            
@@ -215,8 +145,42 @@ const addComment=async(req,res)=>{
        res.status(201).json({message:error._message})
     }
 }
+const likePost=async(req,res)=>{
+    try {
+        
+        const post=await Post.findById({_id:req.body.postId});
+        if(!post){
+        res.status(201).json({message:'post not found',success:false})
+    }
+    if (post.likes.includes(req.body.userId)) {
+        const index = post.likes.indexOf(req.body.userId);
+
+        post.likes.splice(index, 1);
+        await post.save();
+
+        return res.status(200).json({
+            success: true,
+            message: "Post Unliked"
+        });
+    } else {
+        post.likes.push(req.body.userId)
+
+        await post.save();
+
+        return res.status(200).json({
+            success: true,
+            message: "Post Liked"
+        });
+    } 
+}
+    catch (error) {
+        console.log(error)
+        //  res.status(201).json({message:'jhbh',success:false})
+    }
+    }
 exports.post=post
 exports.getPost=getPost
 exports.addComment=addComment;
 exports.getPostMyFollowing=getPostMyFollowing
 exports.whoCommented=whoCommented
+exports.likePost=likePost

@@ -70,7 +70,7 @@
     height: 100%;
     image-rendering: -webkit-optimize-contrast;
     image-resolution: 300dpi;
-    
+    border-radius: 6px;
 }
 .card .others{
     padding-top: 6px;
@@ -119,13 +119,13 @@
 }
     @media screen and (max-width: 415px){
         .card{
-            margin-left: -37px;
+            margin-left: -19px;
     }
     .card .account{
         width: 100%;
     }
     .card .post-img  {
-        width: 384px;
+        width: 400px;
         height: 500px;
     }
 

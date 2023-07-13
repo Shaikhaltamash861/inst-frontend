@@ -1,8 +1,10 @@
 .searchbar{
-    width: 100%;
+    width: 400px;
+    height: 100vh;
     font-family: sans-serif;
     position: relative;
-    border: 1px solid gray;
+    /* border:; */
+    border-right:  1px solid gray;
 }
 .searchbar .search{
     height: 150px;
@@ -28,6 +30,7 @@
     height: 43px;
     outline: none;
     margin-left: 20px;
+    border: 1px solid black;
     text-indent: 4px;
     border-radius: 5px;
     display: inline-block;
@@ -77,4 +80,37 @@
     cursor: pointer;
     color: white;
     height: 44px;
+}
+.back-btn{
+     display: flex;
+     align-items: center;
+}
+.back-btn img{
+    display: none;
+}
+@media screen and (max-width: 415px){
+    .searchbar{
+        width: 409px;
+    }
+    .back-btn h2{
+        display: none;
+
+    }
+    .back-btn img{
+        display: flex;
+        padding-left: 7px;
+
+    }
+    .searchbar .search{
+        display: flex;
+        align-items: center;
+        height: 71px;
+    }
+    .search input{
+        width: 300px;
+    }
+    .back-btn {
+           display:flex;
+           align-items: center;
+    }
 }

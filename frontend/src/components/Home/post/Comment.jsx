@@ -3,48 +3,42 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setComments } from '../../../reducers/postReducer'
 
-function Comment({postId}) {
+function Comment({userId,comment}) {
   const dispatch=useDispatch()
   const comments=useSelector((state)=>state.post.commentDetail)
   console.log(comments)
     const [items,setItems]=useState()
-    // const getComments=async()=>{
-    //   const {data}=await axios.post('http://localhost:8000/api/get/commented/user',{
-    //     postId:postId,
-   
-    //   })
-    //   if(data){
-        
-    //     dispatch(setComments({
-    //       commentDetail:data.message.comments
-    //     }) )
-    //   }
+    const getComments=async()=>{
+      const {data}=await axios.get(`http://localhost:8000/api/user?_id=${userId}`)
+      if(data){
+         console.log(data)
+          setItems(data)
+      }
        
        
-    // }
-    // useEffect(()=>{
+    }
+    useEffect(()=>{
      
        
-    //    getComments()
+       getComments()
        
-    //   },[postId])
+      },[userId])
       
 
   return (
-    <div className='comments'>
-      {
-             comments?.map((comment,id)=>(
-              <div key={id} className='user  all-comments'>
-                <img src={comment?.userDetail?.avatar}/>
-                <p  className="username">{comment?.userDetail?.username}</p>
-                <p className="caption">{comment?.comment}</p>
-              </div>
-             ))
+    <>
+         
+              
+                <img src={items?.avatar}/>
+                <p  className="username">{items?.username}</p>
+                <p className="caption">{comment}</p>
+              
+            
 
-      }
+      
 
 
-    </div>
+    </>
   )
 }
 

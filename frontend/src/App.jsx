@@ -12,6 +12,7 @@ import Profile from './components/User/Profile';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserLoginDetail } from './reducers/userReducers';
 import UserProfile from './components/Home/UserProfile';
+import SearchBar from './components/Home/search/SearchBar';
 
 function App() {
 
@@ -22,6 +23,11 @@ function App() {
   return (
     <>
      <Routes>
+       <Route path="/login" element={<Login/>} />
+       <Route path="/register" element={<Register />} />
+       <Route path="/password/forgot" element={<ForgotPassword/>} />
+       <Route path="/password/reset" element={<ResetPassword/>} />
+
       
 
         <Route path="/" element={ 
@@ -31,16 +37,13 @@ function App() {
         
         } 
         />
+     <Route path='/search' element={username&&<SearchBar/>}/>
       
-     <Route path="/login" element={<Login/>} />
-     <Route path="/register" element={<Register />} />
-     <Route path="/password/forgot" element={<ForgotPassword/>} />
-     <Route path="/password/reset" element={<ResetPassword/>} />
      <Route path="/direct/inbox" element={<Messenger/>} />
 
      <Route exact path="/profile" element={ username && <Profile />} />
      <Route path="/:username" element={ <UserProfile/>} />
-
+        
      </Routes>
        
     </>

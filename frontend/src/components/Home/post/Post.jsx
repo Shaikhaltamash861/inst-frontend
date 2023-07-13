@@ -5,6 +5,7 @@ import  Send  from '../../../assests/icons/Send.png'
 import  Comment  from '../../../assests/icons/comment.png'
 import  Emoji  from '../../../assests/icons/emoji.png'
 import  Heart  from '../../../assests/icons/heart.png'
+import  redHeart  from '../../../assests/icons/redheart.png'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
@@ -14,15 +15,17 @@ import moment from 'moment'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import PostDialog from './PostDialog'
-import { setComments } from '../../../reducers/postReducer'
+import url from '../../../routes/baseUrl'
+
 function Post({post}) {
   const dispatch=useDispatch()
   const user=useSelector((state)=>state.user)
   const [comment,setComment]=useState('')
+  const [like,setLike]=useState('')
   const [open,setOpen]=useState(false)
-  const hitComment= async()=>{
-    const {data}=await axios.post('http://localhost:8000/api/add/comment',{
-      comment:comment,
+  const hitComment= async(prop)=>{
+    const {data}=await axios.post(`${url}/api/add/comment`,{
+      comment:prop,
       user:user.id,
       postId:post._id
     })
@@ -35,25 +38,26 @@ function Post({post}) {
     }
     
   }
-  const getComments=async()=>{
-    console.log('none')
-    const {data}=await axios.post('http://localhost:8000/api/get/commented/user',{
+  useEffect(()=>{
+    const x=post.likes.includes(user.id)
+    setLike(x)
+
+  },[post])
+  const likePost=async()=>{
+     const {data}=await axios.post(`${url}/api/like`,{
       postId:post._id,
- 
-    })
-    if(data){
-      
-      dispatch(setComments({
-        commentDetail:data.message.comments
-      }) )
-      setOpen(!open)
-    }
-    else{
-    }
-     
-     
+      userId:user.id
+     })
+     if(data.success){
+      toast(data.message)
+      setLike(!like)
+     }
+     else{
+       setLike('')
+      toast.error(data.message)
+     }
+
   }
-  
   return (
     <div className='post-card'>
 
@@ -76,8 +80,13 @@ function Post({post}) {
 
     </div>
     <div className='others'>
-    <img src={Heart} className='material'/>
-    <img src={Comment} className='material'/>
+      {
+        like?(
+
+          <img onClick={likePost} src={redHeart} className='material'/>
+        ):(<img onClick={likePost}  src={Heart} className='material'/>)
+      }
+    <img src={Comment} onClick={()=>setOpen(!open)} className='material'/>
     <img src={Send} className='material'/>
     
     </div>
@@ -86,7 +95,7 @@ function Post({post}) {
       paddingTop:'4px',
       fontFamily:'sans-serif'
     }}>
-      <span>1920</span>
+      <span>{post.likes.length}</span>
       <p style={{
         paddingLeft:'6px'
       }}>likes</p>
@@ -100,7 +109,7 @@ function Post({post}) {
           fontFamily:'sans-serif',
           fontWeight:'600',
           fontSize:'13px'
-        }}>{user.username}</p>
+        }}>{post?.bucket[0]?.username}</p>
         <p className='caption' style={{
           wordBreak:'break-word',
           paddingLeft:'5px',
@@ -108,7 +117,7 @@ function Post({post}) {
 
         }}>{post.caption}</p>
        </div>
-        <div onClick={getComments} style={{
+        <div onClick={()=>setOpen(!open)} style={{
           wordBreak:'break-word',
           fontFamily:'sans-serif',
           color:'gray',
@@ -133,7 +142,7 @@ function Post({post}) {
           {
             comment?(
 
-              <button onClick={hitComment}>Post</button>
+              <button onClick={()=>hitComment(comment)}>Post</button>
             ):(
               <></> 
             )
@@ -150,7 +159,7 @@ function Post({post}) {
         {
           open?(
 
-            <PostDialog open={open} setOpen={setOpen} user={post?.bucket[0]} post={post} />
+            <PostDialog open={open} setOpen={setOpen} user={post?.bucket[0]} post={post} hitComment={hitComment} />
           ):(
             <></>
           )

@@ -2,12 +2,13 @@ import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { getUserPost } from '../../../reducers/postReducer'
+import url from '../../../routes/baseUrl'
 export default function SearchedUserPost({user}) {
     const dispatch=useDispatch()
    const post= useSelector((state)=>state.post)
    console.log(post)
     const getPosts=async()=>{
-        const {data}=await axios.get(`http://localhost:8000/api/posts?id=${user.id}`)
+        const {data}=await axios.get(`${url}/api/posts?id=${user.id}`)
         console.log(data)
            if(data){
     

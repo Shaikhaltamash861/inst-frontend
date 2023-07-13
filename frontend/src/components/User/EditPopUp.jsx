@@ -15,6 +15,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setUpdateImage } from '../../reducers/userReducers';
+import url from '../../routes/baseUrl';
 function EditPopUp({open,setOpen}) {
     const dispatch=useDispatch()
     const user=useSelector((state)=>state.user)
@@ -45,7 +46,7 @@ function EditPopUp({open,setOpen}) {
         const {data}=await axios.post(uri,formData)
         if(data.url){
        
-            const response=await axios.post('http://localhost:8000/api/change/profile',{
+            const response=await axios.post(`${url}/api/change/profile`,{
                 id:userId,
                 image:data.url
     

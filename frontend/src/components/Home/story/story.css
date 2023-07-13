@@ -33,8 +33,7 @@
     width: 100%;
     list-style: none;
     display: flex;
-    padding: 10px;
-    padding-left: 20px;
+   
     overflow-x: auto;
 }
 .storys ul li{

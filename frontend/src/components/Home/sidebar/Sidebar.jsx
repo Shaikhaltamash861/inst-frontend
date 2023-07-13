@@ -34,7 +34,7 @@ function Sidebar({reduce}) {
   const myImg=user.avatar;
   const handleScreen=()=>{
 
-    console.log(window.innerWidth)
+    
     if(window.innerWidth<780){
       setLayout(false)
     }
@@ -62,9 +62,16 @@ function Sidebar({reduce}) {
     
   }
   const navigator=(path)=>{
-     if(path!==location.pathname){
-  
+ 
+    if(path!==location.pathname){
+      
       navigate(path)
+    }
+    else{
+       if(searchInput){
+         setSearchInput(false)
+         setLayout(!layout)
+       }
      }
   }
   return (<div className={searchInput?'full':''}>
@@ -84,8 +91,8 @@ function Sidebar({reduce}) {
               <OtherHousesOutlinedIcon className='icon'/>
               <h3>Home</h3>
             </li>
-            <li className='item' onClick={handleSearch}>
-            <SearchSharpIcon className='icon'/>
+            <li className='item' onClick={()=>navigator('/search')}>
+            <SearchSharpIcon  className='icon'/>
              
                
               <h3>Search</h3>
@@ -106,9 +113,9 @@ function Sidebar({reduce}) {
             <FavoriteBorderOutlinedIcon className='icon'/>
             <h3>Notifications</h3>
             </li>
-            <li className='item'>
+            <li className='item'onClick={()=>setOpen(!open)}>
             <AddBoxOutlinedIcon className='icon'/>
-            <h3 onClick={()=>setOpen(!open)}>Create</h3>
+            <h3 >Create</h3>
             </li>
             <li className='item' onClick={()=>navigator('/profile')}>
                 <img src={myImg} alt='profile'/>

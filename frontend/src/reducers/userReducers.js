@@ -10,7 +10,8 @@ const initialState={
      posts:'',
      followers:'',
      following:'',
-     myFollowingPost:''
+     myFollowingPost:'',
+     users:[]
 }
 
 const userSlice=createSlice({
@@ -42,10 +43,13 @@ reducers:{
         state.email=null,
         state.username=null,
         state.avatar=null
+    },
+    setRecent:(state,action)=>{
+        state.users=action.payload.users
     }
   
 
 }
 })
- export const {setUserLoginDetail,setUserLogout,setUpdateImage,setPostOfFloowing}=userSlice.actions;
+ export const {setUserLoginDetail,setUserLogout,setUpdateImage,setPostOfFloowing,setRecent}=userSlice.actions;
  export default userSlice.reducer;

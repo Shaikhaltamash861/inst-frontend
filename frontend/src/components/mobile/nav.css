@@ -1,0 +1,26 @@
+
+.nav{
+    display: none;
+}
+@media screen and (max-width: 415px){
+    .nav{
+        width: 410px;
+         
+        height: 77px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+       background-color: white;
+        /* position: fixed;
+        top: 0; */
+    }
+    .nav-icons{
+        padding-right: 13px;
+    }
+    .nav img{
+        width: 170px;
+    }
+    
+
+}
