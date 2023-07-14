@@ -125,8 +125,11 @@
         width: 100%;
     }
     .card .post-img  {
-        width: 400px;
-        height: 500px;
+        /* width: 98%;
+        height: 500px; */
+    }
+    .card .post-img img{
+        width: 343px;
     }
 
 }

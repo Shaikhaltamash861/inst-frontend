@@ -52,6 +52,7 @@
 }
 .storys li img{
     width: 70px;
+    height: 70px;
     border-radius: 50%;
     border: 3px solid rgb(196, 22, 109);
 }
