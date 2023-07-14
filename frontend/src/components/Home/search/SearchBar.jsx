@@ -61,8 +61,8 @@ function SearchBar() {
       })
     )
     if(path!=location.pathname){
-      
-      location.replace(`/${path}`)
+
+      location.replace(`profile/${path}`)
     //  navigate(path)
     }
  }
