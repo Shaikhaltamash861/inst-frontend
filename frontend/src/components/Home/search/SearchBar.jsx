@@ -61,9 +61,9 @@ function SearchBar() {
       })
     )
     if(path!=location.pathname){
-
-      location.replace(`profile/${path}`)
-    //  navigate(path)
+        
+      // location.replace(`profile/${path}`)
+     navigate(`${path}`)
     }
  }
   const clearAll=()=>{

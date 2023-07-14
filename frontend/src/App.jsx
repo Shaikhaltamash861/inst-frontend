@@ -43,7 +43,7 @@ function App() {
      <Route path="/direct/inbox" element={<Messenger/>} />
 
      <Route exact path="/profile" element={ username && <Profile />} />
-     <Route path="/profile/:username" element={ <UserProfile/>} />
+     <Route path="search/:username" element={ <UserProfile/>} />
         
      </Routes>
        
