@@ -50,7 +50,8 @@ function MyPost() {
         display:'flex',
         width:'365px',
         justifyContent:'start',
-        alignItems:'center'
+        alignItems:'center',
+        marginLeft:'6px'
       
     }}>
    <KeyboardBackspaceSharpIcon onClick={()=>navigate(-1)} style={{

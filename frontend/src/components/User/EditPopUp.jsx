@@ -150,8 +150,8 @@ function EditPopUp({open,setOpen}) {
                 userImg?(
 
                     <label style={{
-                        width:'150px',
-                        height:'30px',
+                        width:'120px',
+                        height:'20px',
                         textAlign:'center',
                         fontSize:'17px',
                         fontWeight:'500'

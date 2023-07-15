@@ -41,7 +41,7 @@ return (
                </div>
                <div className="main"
                style={{
-                background:'black'
+                color:'black'
                }}
                >
                {

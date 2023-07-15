@@ -20,8 +20,7 @@ import axios from "axios";
 return (
       <Dialog open={open}    >
            <div className={'dialog'} style={{
-            width:'400px',
-            height:'500px'
+            
            }}>
               
              <div className="title" style={{
@@ -37,7 +36,7 @@ return (
                </div>
                <div className="main"
                style={{
-                background:'black'
+                
                }}
                >
                 {

@@ -25,8 +25,7 @@ import axios from "axios";
 return (
       <Dialog open={open}    >
            <div className={'dialog'} style={{
-            width:'400px',
-            height:'500px'
+            
            }}>
               
              <div className="title" style={{
@@ -41,7 +40,7 @@ return (
                </div>
                <div className="main"
                style={{
-                background:'black'
+                color:'black'
                }}
                >
                 {
@@ -57,9 +56,9 @@ return (
                       <img src='https://w7.pngwing.com/pngs/419/473/png-transparent-computer-icons-user-profile-login-user-heroes-sphere-black-thumbnail.png'/>
                     )
                   }
-                <h2>{val.name}s</h2>
+                <h2>{val.name}</h2>
                 </div>
-                <button>Follows</button>
+                <button>Unfollow</button>
                </div>
                  ))
                 } 

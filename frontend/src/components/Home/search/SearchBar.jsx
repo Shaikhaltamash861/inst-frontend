@@ -47,6 +47,12 @@ function SearchBar() {
     }
 
   }
+  useEffect(()=>{
+        let timer=setTimeout(()=>{
+          getUserByUserName()
+        },2000)
+        return ()=> clearTimeout(timer)
+  },[query])
  
   const navigator=(path,user)=>{
     
@@ -96,7 +102,7 @@ function SearchBar() {
             }}>
 
             <input type='text' placeholder='Search' value={query} onChange={(e)=>setQuery(e.target.value)}/>
-            <button className='search-btn' onClick={getUserByUserName}><SearchSharpIcon/></button>
+            {/* <button className='search-btn' onClick={getUserByUserName}><SearchSharpIcon/></button> */}
             </div>
         </div>
            <hr/>

@@ -161,12 +161,12 @@
        padding: 22px;
     }
     .first img{
-        width: 75px;
-        height: 75px;
+        width: 113px;
+        height:113px;
         border-radius: 50%;
     }
       .first .me{
-        margin-top: -15px;
+        /* margin-top: -15px; */
       }
 .tag{
     width: 0;
@@ -179,6 +179,7 @@
     flex-wrap: wrap;
     
 }
+
 .first .details{
     display: flex;
     flex-direction: column;
