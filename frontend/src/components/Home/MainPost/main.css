@@ -20,3 +20,8 @@
     align-items: center;
     border-right: 1px solid rgb(189, 189, 189) ;
 }
+@media screen and (max-width: 415px){
+    .post{
+        margin-bottom: 57px;
+    }
+}

@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { getUserPost } from '../../../reducers/postReducer'
 import url from '../../../routes/baseUrl'
+import { useNavigate } from 'react-router-dom'
 export default function SearchedUserPost({user}) {
+  const navigate=useNavigate()
     const dispatch=useDispatch()
    const post= useSelector((state)=>state.post)
-   console.log(post)
+  
     const getPosts=async()=>{
-        const {data}=await axios.get(`${url}/api/posts?id=${user.id}`)
-        console.log(data)
+        const {data}=await axios.get(`${url}/api/posts?id=${user?.id}`)
+      
            if(data){
     
              
@@ -24,14 +26,14 @@ export default function SearchedUserPost({user}) {
          getPosts()
       }, [user])
       
-
+ console.log(post)
   return (
     <div className='post-cards'>
 
     {
       post?.userPost?.map((val)=>(
         
-        <div className='post-card' key={val._id}>
+        <div className='post-card' key={val._id} onClick={()=>navigate('/post')} >
         <img src={val.image} />
     </div>
       ))

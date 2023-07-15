@@ -50,6 +50,7 @@ function Post({post}) {
      })
      if(data.success){
       toast(data.message)
+      
       setLike(!like)
      }
      else{
@@ -76,7 +77,7 @@ function Post({post}) {
     
         </div>
         <div className='post-img'>
-            <img src={post.image}/>
+            <img src={post?.image}/>
 
     </div>
     <div className='others'>
@@ -95,10 +96,11 @@ function Post({post}) {
       paddingTop:'4px',
       fontFamily:'sans-serif'
     }}>
-      <span>{post.likes.length}</span>
+      <span>{post.likes.length==0?(<></>):(<>{post?.likes?.length}</>)}</span>
       <p style={{
         paddingLeft:'6px'
-      }}>likes</p>
+      }}>{post?.likes?.length==0?(<>
+      </>):(<>Likes</>)}</p>
        </div>
        <div className='comments' style={{
 

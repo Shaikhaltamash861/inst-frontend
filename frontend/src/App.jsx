@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUserLoginDetail } from './reducers/userReducers';
 import UserProfile from './components/Home/UserProfile';
 import SearchBar from './components/Home/search/SearchBar';
+import MyPost from './components/User/mypost/MyPost';
 
 function App() {
    const {userId}=useParams()
@@ -44,7 +45,7 @@ function App() {
 
      <Route exact path="/profile" element={ username && <Profile />} />
      <Route path="search/:username" element={ <UserProfile/>} />
-        
+        <Route path='/post' element={username&& <MyPost/>}/>
      </Routes>
        
     </>

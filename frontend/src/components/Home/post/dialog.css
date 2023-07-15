@@ -131,7 +131,13 @@
     }
     .comment{
         display: flex;
-    }
+        position: fixed;
+        bottom: 0;
+
+      }
+      .comment input{
+        width: 311px;
+      }
     .box .childs{
         flex-direction: column;
     }

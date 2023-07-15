@@ -6,7 +6,7 @@ limits: {  fileSize: 1048576, fieldSize:  25 * 1024 * 1024 } })
 
 const router=express.Router();
 const {signup,signin, getUserById, getUserByUserName, followUser, getFollowers, getFollowing, changeProfile}=require('../controller/userContriller');
-const { post,getPost, addComment, getPostMyFollowing, whoCommented, likePost } = require('../controller/postController');
+const { post,getPost, addComment, getPostMyFollowing, whoCommented, likePost, deletePost } = require('../controller/postController');
 
 router.post('/signup',signup);
 router.post('/signin',signin)
@@ -22,4 +22,5 @@ router.post('/add/comment',addComment);
 router.post('/get/posts/following',getPostMyFollowing)
 router.post('/get/commented/user',whoCommented)
 router.post('/like',likePost)
+router.post('/delete/post',deletePost)
 module.exports=router

@@ -22,7 +22,7 @@ import {
   const cld = new Cloudinary({cloud: {cloudName: 'dwtnjp4gb'}});
 
 import { useState } from "react";
-import { getMyPost } from "../reducers/postReducer";
+import { getMyPost, getUserPost, updater } from "../reducers/postReducer";
 import url from "../routes/baseUrl";
 
   const ConfirmNotification = ({open,setOpen}) => {
@@ -70,6 +70,7 @@ import url from "../routes/baseUrl";
           console.log(response.data.post)
           setOpen(!open)
           toast.success('successfully uploaded')
+       
           setItems(true)
         
         }

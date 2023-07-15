@@ -80,7 +80,7 @@
         image-rendering: -webkit-optimize-contrast;
  }
  .details{
-     flex-direction: column;
+     /* flex-direction: column; */
     justify-content: center;
     align-items: center;
 }
@@ -89,7 +89,7 @@
 }
 
 .profile  .post-card-box{
-    
+
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 5px;
@@ -148,15 +148,17 @@
 }
 @media screen and (max-width: 414px) {
     .post-cards{
-      width: 100%;flex-direction: column;
+      width: 100%;
+      flex-direction: column;
       display: flex;
       
       
     }
     .first{
         display: flex;
-       flex-direction: column;
+       /* flex-direction: column; */
        justify-content: center;
+       padding: 22px;
     }
     .first img{
         width: 75px;
@@ -176,6 +178,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     
+}
+.first .details{
+    display: flex;
+    flex-direction: column;
 }
 .profile .post-card-box{
    padding: 0;

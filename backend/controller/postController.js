@@ -42,7 +42,7 @@ const getPost=async(req,res)=>{
         
         const response=await Post.find({
             postedBy:req.query.id
-        });
+        }).sort({createdAt:-1});
         res.send(response)
     } catch (error) {
         res.status(201).json({message:error._message})
@@ -83,6 +83,35 @@ const result = await Post.aggregate([
         
     } catch (error) {
         console.log(error)
+    }
+}
+const deletePost=async(req,res)=>{
+    const postId=req.query.postId
+    const userId=req.body.userId;
+   
+    try {
+         const post=await Post.findById({_id:postId})
+         console.log(post.postedBy)
+         console.log(userId)
+         if(post){
+               if(post.postedBy.toString()!==userId){
+                return res.status(201).json({message:'unauthorized user',success:false})
+               }
+               await post.deleteOne()
+               const user=await User.findById({_id:userId})
+                const index=user.posts.indexOf(postId)
+                user.posts.splice(index,1);
+              const save=  await user.save()
+             res.status(200).json({message:'post deleted',success:true})
+            }
+            else{
+
+                res.status(201).json({message:'post not found',success:false})
+            }
+
+    } catch (error) {
+        console.log(error)
+        res.status(201).json({message:'Cannot delete',success:false})
     }
 }
  const whoCommented=async(req,res)=>{
@@ -181,6 +210,7 @@ const likePost=async(req,res)=>{
 exports.post=post
 exports.getPost=getPost
 exports.addComment=addComment;
+exports.deletePost=deletePost
 exports.getPostMyFollowing=getPostMyFollowing
 exports.whoCommented=whoCommented
 exports.likePost=likePost

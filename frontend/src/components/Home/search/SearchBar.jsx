@@ -22,6 +22,7 @@ import url from '../../../routes/baseUrl';
 function SearchBar() {
   const dispatch=useDispatch()
   const recent =useSelector((state)=>state.user.users)
+  const user=useSelector((state)=>state.user)
   const navigate=useNavigate()
 
   const [accounts,setAccount]=useState([])
@@ -29,8 +30,9 @@ function SearchBar() {
   const [query,setQuery]=useState('')
   const getUserByUserName=async(e)=>{
    
-    const {data}=await axios.post(`${url}/api/retrive/user`,{
+    const {data}=await axios.post(`${url}/api/retrive/user?user=${user.id}`,{
       query
+
     })
     if(data.success){
 

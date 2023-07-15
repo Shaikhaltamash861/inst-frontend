@@ -119,7 +119,9 @@ function UserProfile() {
 
         <div className='details'>
           <p>{myProfile.username}</p>
-          <div>
+          <div style={{
+            display:'flex'
+          }}>
             {
               follower?(
 
@@ -128,13 +130,46 @@ function UserProfile() {
                 <button className='f-btn' onClick={follow}>Unfollow</button>
               )
             }
+          <button style={{
+            color:'black',
+            background:' rgb(204, 204, 204)',
+            marginLeft:'10px',
+            height:'26px',
+            fontFamily:'sans-serif',
+            fontWeight:'600'
+
+          }}>Message</button>
           </div>
-          {/* <button className='edit-btn'>edit profile</button> */}
         </div>
         <div className='about'>
-          <p>{myProfile?.posts?.length}post</p>
-          <p onClick={handleOpenFollower} >{myProfile?.followers?.length}followers</p>
-          <p onClick={handleOpenFollowing}>{myProfile?.following?.length}following</p>
+          <p>
+          <span style={{
+            fontWeight:'600',
+            marginRight:'2px'
+          }}>
+            {myProfile?.posts?.length}
+            </span>
+           
+            post</p>
+          <p onClick={handleOpenFollower} >
+          <span style={{
+            fontWeight:'600',
+            marginRight:'2px'
+          }}>
+           
+            {myProfile?.followers?.length}
+            </span>
+            
+            followers</p>
+          <p onClick={handleOpenFollowing}>
+          <span style={{
+            fontWeight:'600',
+            marginRight:'2px'
+          }}>
+    
+            {myProfile?.following?.length}
+            </span>
+            following</p>
         </div>
         </div>
       </div>

@@ -2,16 +2,15 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setComments } from '../../../reducers/postReducer'
+import url from '../../../routes/baseUrl'
 
 function Comment({userId,comment}) {
-  const dispatch=useDispatch()
-  const comments=useSelector((state)=>state.post.commentDetail)
-  console.log(comments)
+  const dispatch=useDispatch()  
     const [items,setItems]=useState()
     const getComments=async()=>{
-      const {data}=await axios.get(`http://localhost:8000/api/user?_id=${userId}`)
+      const {data}=await axios.get(`${url}/api/user?_id=${userId}`)
       if(data){
-         console.log(data)
+         
           setItems(data)
       }
        

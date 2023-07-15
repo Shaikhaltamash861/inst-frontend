@@ -126,10 +126,13 @@ const getFollowing=async(req,res)=>{
 
 const getUserById=async(req,res)=>{
     
-    const {_id}=req.query;
+    const _id=req.query._id
     
     try {
-        const user = await User.findById({_id});
+        if(!_id){
+            res.status(201).json({message:'id is empty'})
+        }
+        const user = await User.findById({_id:_id});
         res.status(200).json(user)
     } catch (error) {
         console.log(error)
@@ -145,11 +148,11 @@ const getUserByUserName=async(req,res)=>{
     //     }]
     // });
     if (req.body.query) {
-        const users = await User.find({
+        const userss = await User.find({
             $or: [
                 {
-                    name: {
-                        $regex: req.body.query,
+                    name:  {
+                        $regex:  req.body.query,
                         $options: "i",
                     },
                 },
@@ -161,7 +164,9 @@ const getUserByUserName=async(req,res)=>{
                 }
             ]
         });
-
+        
+        const users=userss.filter((user)=>user._id.toString()!==req.query.user) 
+        
         res.status(200).json({
             success: true,
             users,

@@ -122,9 +122,31 @@ function Profile() {
         </div>
 
         <div className='about'>
-          <p >{myProfile?.posts?.length}post</p>
-          <p  onClick={openFollower}>{myProfile?.followers?.length}followers</p>
-          <p onClick={ handleOpenFollowing}>{myProfile?.following?.length}following</p>
+          <p > <span style={{
+            fontWeight:'600',
+            marginRight:'2px'
+          }}>
+            {myProfile?.posts?.length}
+            </span> 
+            post</p>
+          <p  onClick={openFollower}>
+          <span style={{
+            fontWeight:'600',
+            marginRight:'2px'
+          }}>
+           
+            {myProfile?.followers?.length}
+            </span>
+            followers</p>
+          <p onClick={ handleOpenFollowing}>
+          <span style={{
+            fontWeight:'600',
+            marginRight:'2px'
+          }}>
+            
+            {myProfile?.following?.length}
+            </span>
+            following</p>
         </div>
         </div>
       </div>

@@ -42,9 +42,9 @@ const [comment,setComment]=useState('')
                  open?(
                 <>
                    {
-                     post?.comments?.map((commet)=>(
+                     post?.comments?.map((commet,id)=>(
                        
-                       <div className="user">
+                       <div className="user" key={id}>
                           <Comment userId={commet.user} comment={commet.comment}/>
                           </div>
                         ))

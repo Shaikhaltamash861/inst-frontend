@@ -20,6 +20,9 @@ const postSlice=createSlice({
 
         state.userPost=action.payload.userPost
     },
+    updater:(state,action)=>{
+             state.userPost.push(action.payload.userPost)
+    },
     setComments:(state,action)=>{
     
          state.commentDetail=action.payload.commentDetail
@@ -31,5 +34,5 @@ const postSlice=createSlice({
 }
 })
 
- export const {getMyPost,getUserPost,setComments}=postSlice.actions;
+ export const {getMyPost,getUserPost,setComments,updater}=postSlice.actions;
  export default postSlice.reducer;
