@@ -11,7 +11,7 @@ node_modules
 
 *.local
 /node_modules
-
+/server
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

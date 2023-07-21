@@ -114,7 +114,7 @@
 .post-cards .post-card img{
     width: 338px;
     height: 350px;
-    
+    object-fit: cover;
     image-rendering: -webkit-optimize-contrast;
     
 }

@@ -16,8 +16,7 @@ import SearchBar from './components/Home/search/SearchBar';
 import MyPost from './components/User/mypost/MyPost';
 
 function App() {
-   const {userId}=useParams()
-   console.log(userId)
+  
   const dispatch=useDispatch()
   let username=useSelector((state)=>state.user.username)
   

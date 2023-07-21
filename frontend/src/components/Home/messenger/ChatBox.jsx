@@ -1,0 +1,91 @@
+import React, { useEffect, useRef, useState } from 'react'
+import './chat.css'
+import url from '../../../routes/baseUrl'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
+
+function ChatBox({socket}) {
+    const [text,setText]=useState('')
+    const user=useSelector((state)=>state.user)
+    const receiver=user.chat._id
+    const [messages,setMessages]=useState([])
+    const [socketMsg,setScoketMsg]=useState(null)
+    const scrollRef = useRef()
+    useEffect(()=>{
+        socket?.current?.on('getMessage',(data)=>{
+            console.log('hit')
+            console.log(data)
+            if(data?.senderId&&data?.message){
+                console.log(data)
+
+                setMessages((val)=>[...val ,{
+                    message:data.message,
+                    senderId:data.senderId,
+                    createdAt:Date.now()
+                }])
+            }
+           })
+    },[socket])
+
+    // useEffect(()=>{
+    //     console.log('msg arrvived')
+    //     console.log(socketMsg)
+
+    //     // socketMessge && user?._id==&&
+    //     setMessages(prev=>[...prev,socketMsg])
+    //   },[socketMsg])
+
+    const send=async()=>{
+        socket?.current?.emit('sendMessage',{
+            senderId:user.id,
+            receiverId:receiver,
+            message:text
+         })
+        const {data}= await axios.post(`${url}/api/new/message`,{
+            conversationId:user?.consversationId,
+            senderId:user.id,
+            message:text
+        })
+        if(data.success){
+            setMessages([...messages,data.message])
+        }
+        
+        setText('')
+    }
+    const getMessages=async()=>{
+        const {data}=await axios.get(`${url}/api/retrive/messages?conversationId=${user.consversationId}`)
+         setMessages(data)
+         
+    }
+    useEffect(()=>{
+          getMessages()
+    },[user.consversationId])
+
+    useEffect(() => {
+        scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+      }, [messages])
+  return (
+    <div className='chat-box'>
+        <div className='chattings'>
+            {
+                messages?.map((message,id)=>(
+                    // {id===item.senderId?"me":"you"}
+            <div  key={id} className={ message?.senderId==user.id? "message send":'message receive'}>
+
+                                <p ref={scrollRef}>{message?.message}</p>
+            </div>
+                ))
+            }
+            
+            
+                    
+        </div>
+        <div className='text'>
+            <input type='text' placeholder='Write something ....' value={text} onChange={(e)=>setText(e.target.value)}/>
+            <p className='send-button' onClick={send}>send</p>
+        </div>
+    </div>
+  )
+}
+
+export default ChatBox

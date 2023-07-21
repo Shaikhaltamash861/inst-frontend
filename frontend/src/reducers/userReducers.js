@@ -11,7 +11,11 @@ const initialState={
      followers:'',
      following:'',
      myFollowingPost:'',
-     users:[]
+     users:[],
+     chat:'',
+     consversationId:'',
+     chatList:'',
+
 }
 
 const userSlice=createSlice({
@@ -42,14 +46,34 @@ reducers:{
         state.name=null,
         state.email=null,
         state.username=null,
-        state.avatar=null
+        state.avatar=null,
+        state.posts=null,
+        state.followers=null,
+        state.following=null,
+        state.consversationId=null,
+        state.myFollowingPost=null,
+        state.users=[],
+        state.chat=null
+    },
+    setChat:(state,action)=>{
+          state.chat=action.payload.chat,
+        // console.log(action.payload)
+          state.consversationId=action.payload.consversationId
     },
     setRecent:(state,action)=>{
         state.users=action.payload.users
+    },
+    setChatList:(state,action)=>{
+    
+        state.chatList=action.payload.list
+        console.log(state.chatList)
+    //    let res= state.chatList.find((list)=>list.user.id==action.payload.list.user.id)
+    //    if(!res){
+    //    }
     }
   
 
 }
 })
- export const {setUserLoginDetail,setUserLogout,setUpdateImage,setPostOfFloowing,setRecent}=userSlice.actions;
+ export const {setUserLoginDetail,setUserLogout,setUpdateImage,setPostOfFloowing,setRecent,setChat,setChatList}=userSlice.actions;
  export default userSlice.reducer;

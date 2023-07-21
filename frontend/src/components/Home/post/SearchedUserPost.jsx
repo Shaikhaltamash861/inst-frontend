@@ -11,7 +11,7 @@ export default function SearchedUserPost({user}) {
   
     const getPosts=async()=>{
         const {data}=await axios.get(`${url}/api/posts?id=${user?.id}`)
-      
+      console.log(data)
            if(data){
     
              
@@ -26,7 +26,7 @@ export default function SearchedUserPost({user}) {
          getPosts()
       }, [user])
       
- console.log(post)
+ 
   return (
     <div className='post-cards'>
 

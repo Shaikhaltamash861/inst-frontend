@@ -16,11 +16,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setUpdateImage } from '../../reducers/userReducers';
 import url from '../../routes/baseUrl';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 function EditPopUp({open,setOpen}) {
     const dispatch=useDispatch()
     const user=useSelector((state)=>state.user)
     const userId=user.id;
     const userImg=user.avatar;
+    const [item,setItem]=useState(false);
     
     const [porfileImage,setProfileImage]=useState()
     const handleChange=(e)=>{
@@ -34,7 +37,7 @@ function EditPopUp({open,setOpen}) {
           reader.readAsDataURL(e.target.files[0]);
     }
     const upload=async(e)=>{
-
+           setItem(true)
         const formData=new FormData();
         
         formData.append('file',porfileImage)
@@ -60,6 +63,7 @@ function EditPopUp({open,setOpen}) {
                     avatar:data.url
                 }))
                 setProfileImage('')
+                // setItem(false)
             }
             else{
                 setOpen(!open)
@@ -109,16 +113,34 @@ function EditPopUp({open,setOpen}) {
                             borderRadius:'50%'
                         }}
                         />
-                        <button style={{
-                            background:' rgb(33, 92, 221)',
-                            height:'30px',
-                            marginTop:'16px',
-                            color:'white',
-                            border:'none',
-                            cursor:'pointer',
-                            FontWeight:'600px'
-                        }} onClick={upload}
-                        >Upload</button>
+                         {
+                             item?(
+                                 
+                                 <Box sx={{     top: 0,
+                                    left: 0,
+                                    bottom: 0,
+                                    right: 0,
+                                    position: 'absolute',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center', }}>
+                      <CircularProgress />
+                      </Box>
+                                    ):(
+                                        <button style={{
+                                            background:' rgb(33, 92, 221)',
+                                            height:'30px',
+                                            marginTop:'16px',
+                                            color:'white',
+                                            border:'none',
+                                            cursor:'pointer',
+                                            FontWeight:'600px'
+                                        }} onClick={upload}
+                                        >
+                                        <>upload</>
+                        </button>
+                                    )
+                                 }    
                         </div>
                 ):(
                     <>

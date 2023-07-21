@@ -20,14 +20,14 @@ import ConfirmNotification from '../../Notification';
 import { useEffect } from 'react';
 import SearchBar from '../search/SearchBar';
 import Banner from '../../User/dropDown/Banner';
-function Sidebar({reduce}) {
+function Sidebar() {
   const navigate=useNavigate();
   const dispatch=useDispatch()
  const location=useLocation()
 
   const [searchInput,setSearchInput]=useState(false)
   const [open,setOpen]=useState(false)
-  const [layout,setLayout]=useState(true)
+  const [layout,setLayout]=useState(false)
   const [openSetting,setOpenSetting]=useState(false)       
   const user=useSelector((state)=>state.user)
   const username=user.username
@@ -35,11 +35,11 @@ function Sidebar({reduce}) {
   const handleScreen=()=>{
 
     
-    if(window.innerWidth<780){
+    if(window.innerWidth<980){
       setLayout(false)
     }
     else{
-      setLayout(true)
+      setLayout(false)
     }
   }
   window.addEventListener('resize',handleScreen)
@@ -55,6 +55,10 @@ function Sidebar({reduce}) {
            if(location.pathname===username){
             setLayout(true)
            }
+           if(location.pathname==='/direct/inbox'){
+            
+            setLayout(false)
+           }
   },[location])
   const handleSearch=()=>{
     setSearchInput(!searchInput)
@@ -62,18 +66,24 @@ function Sidebar({reduce}) {
     
   }
   const navigator=(path)=>{
- 
+    
+      
     if(path!==location.pathname){
       
+      if(location.pathname==='/direct/inbox'){
+        
+        setLayout(false)
+      }
       navigate(path)
     }
     else{
        if(searchInput){
          setSearchInput(false)
-         setLayout(!layout)
+         setLayout(false)
        }
      }
   }
+  
   return (<div className={searchInput?'full':''}>
     <div className={layout?'sidebar':'tag'}  >
         <div className='logo' onClick={()=>navigate('/')}>

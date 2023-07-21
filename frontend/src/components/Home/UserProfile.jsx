@@ -6,38 +6,66 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from 'react-toastify'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Follow from './Follow'
 import { userFollowers, userFollowing } from '../../reducers/friendsSlice'
 import Following from './Following'
 import SearchedUserPost from './post/SearchedUserPost'
 import { searchedUser } from '../../actions/postAction'
 import url from '../../routes/baseUrl'
+import { setChat, setChatList } from '../../reducers/userReducers'
 // import { useSelector } from 'react-redux'
 function UserProfile() {
   const dispatch=useDispatch()
-  
+ const navigate=useNavigate()
   const id=useSelector((state)=>state.user.id)
   const h=useSelector((state)=>state.user)
-  const myProfile=useSelector((state)=>state.searchedUser)
+  // const myProfile=useSelector((state)=>state.searchedUser)
   const user=useSelector((state)=>state.searchedUser)
 
   const [follower,setFollower]=useState(true)
   const [openFollowing,setOpenFollowing]=useState(false);
   const [openFollow,setOpenFollow]=useState(false);
- 
+  const message=async()=>{
+     console.log(id)
+     console.log(user.id)
+
+    const {data}=await axios.post(`${url}/api/new/conversation`,{
+      senderId:id,
+      receiverId:user.id
+      
+     })
+     
+     if(data.success){
+  
+     
+      dispatch(setChat({
+        chat:user,
+        consversationId:data?.message[0]?._id
+      }))
+       navigate('/direct/inbox')
+      //  dispatch(setChat({
+      //       chat:user,
+      //       consversationId:data?.message[0]?._id
+      //   }))
+     }
+     else{
+       console.log('wrong')
+       toast.error('something went wrong')
+     }
+   }
   useEffect(()=>{
-    const x= myProfile.followers.includes(id)
+    const x= user.followers.includes(id)
    if (x) {
     setFollower(false)
     
    }
                 
-  },[myProfile])
+  },[user])
   const follow= async()=>{
     const ids={
       myId:id,
-      yourId:myProfile.id
+      yourId:user.id
     }
     const {data}=await axios.post(`${url}/api/follow/user`
     ,ids
@@ -118,7 +146,7 @@ function UserProfile() {
         <div className='me'>
 
         <div className='details'>
-          <p>{myProfile.username}</p>
+          <p>{user?.username}</p>
           <div style={{
             display:'flex'
           }}>
@@ -130,7 +158,7 @@ function UserProfile() {
                 <button className='f-btn' onClick={follow}>Unfollow</button>
               )
             }
-          <button style={{
+          <button  onClick={message} style={{
             color:'black',
             background:' rgb(204, 204, 204)',
             marginLeft:'10px',
@@ -147,7 +175,7 @@ function UserProfile() {
             fontWeight:'600',
             marginRight:'2px'
           }}>
-            {myProfile?.posts?.length}
+            {user?.posts?.length}
             </span>
            
             post</p>
@@ -157,7 +185,7 @@ function UserProfile() {
             marginRight:'2px'
           }}>
            
-            {myProfile?.followers?.length}
+            {user?.followers?.length}
             </span>
             
             followers</p>
@@ -167,7 +195,7 @@ function UserProfile() {
             marginRight:'2px'
           }}>
     
-            {myProfile?.following?.length}
+            {user?.following?.length}
             </span>
             following</p>
         </div>
