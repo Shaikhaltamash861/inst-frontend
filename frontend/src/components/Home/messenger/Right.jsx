@@ -11,15 +11,27 @@ function Right() {
     const user=users.chat;
     const [onlineUsers,setOnlineUsers]=useState();
     const [status,setStatus]=useState(false)
+    const [socketMsg,setScoketMsg]=useState()
     useEffect(()=>{
     
-        socket.current=io('https://socket-server-insta.onrender.com');
-     
+        socket.current=io('ws://localhost:8900');
+        socket?.current?.on('getMessage',(data)=>{
+        
+            if(data?.senderId)
+            setScoketMsg({
+                senderId:data.senderId,
+                message:data.message,
+                createdAt:Date.now()
+
+            })
+           })
     },[])
+    
+    
     useEffect(()=>{
         socket?.current.emit('addUsers',users.id)
         socket?.current.on('online-users',(user)=>{
-        
+            
              setOnlineUsers(user)
             
         })
@@ -53,7 +65,7 @@ function Right() {
             
         </div>
         <div className='chat-box'>
-           <ChatBox socket={socket} />
+           <ChatBox socket={socket} socketMsg={socketMsg} />
         </div>
                </>
         

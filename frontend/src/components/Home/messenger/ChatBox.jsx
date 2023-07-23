@@ -4,36 +4,23 @@ import url from '../../../routes/baseUrl'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 
-function ChatBox({socket}) {
+function ChatBox({socket,socketMsg}) {
     const [text,setText]=useState('')
     const user=useSelector((state)=>state.user)
     const receiver=user.chat._id
     const [messages,setMessages]=useState([])
-    const [socketMsg,setScoketMsg]=useState(null)
+  
     const scrollRef = useRef()
+   
+
     useEffect(()=>{
-        socket?.current?.on('getMessage',(data)=>{
-            console.log('hit')
-            console.log(data)
-            if(data?.senderId&&data?.message){
-                console.log(data)
+    
+           if(socketMsg?.senderId){
 
-                setMessages((val)=>[...val ,{
-                    message:data.message,
-                    senderId:data.senderId,
-                    createdAt:Date.now()
-                }])
+               // socketMessge && user?._id==&&
+               setMessages(prev=>[...prev,socketMsg])
             }
-           })
-    },[socket])
-
-    // useEffect(()=>{
-    //     console.log('msg arrvived')
-    //     console.log(socketMsg)
-
-    //     // socketMessge && user?._id==&&
-    //     setMessages(prev=>[...prev,socketMsg])
-    //   },[socketMsg])
+      },[socketMsg])
 
     const send=async()=>{
         socket?.current?.emit('sendMessage',{
