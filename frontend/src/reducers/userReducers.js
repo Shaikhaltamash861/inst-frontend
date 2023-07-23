@@ -60,6 +60,10 @@ reducers:{
         // console.log(action.payload)
           state.consversationId=action.payload.consversationId
     },
+    setClearChat:(state,action)=>{
+        state.chat=action.payload.chat;
+        state.consversationId=action.payload.consversationId
+    },
     setRecent:(state,action)=>{
         state.users=action.payload.users
     },
@@ -75,5 +79,5 @@ reducers:{
 
 }
 })
- export const {setUserLoginDetail,setUserLogout,setUpdateImage,setPostOfFloowing,setRecent,setChat,setChatList}=userSlice.actions;
+ export const {setClearChat, setUserLoginDetail,setUserLogout,setUpdateImage,setPostOfFloowing,setRecent,setChat,setChatList}=userSlice.actions;
  export default userSlice.reducer;

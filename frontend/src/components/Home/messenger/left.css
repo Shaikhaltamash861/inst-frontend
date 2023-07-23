@@ -81,3 +81,12 @@
     display: flex;
     align-items: center;
 }
+@media screen and (max-width: 415px){
+    .left-bar{
+        width: 359px;
+        height: 100vh;
+    }
+    .header h3{
+        display: none;
+    }
+}

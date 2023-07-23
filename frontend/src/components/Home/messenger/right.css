@@ -39,3 +39,8 @@
     color: gray;
     font-size: .7em;
 }
+@media screen and (max-width: 415px){
+    .right-bar .user-nav{
+        width: 100%;
+    }
+}

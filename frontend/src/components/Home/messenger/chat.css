@@ -1,3 +1,14 @@
+.page{
+    width: 100%;
+    display: flex;
+}
+.right-chat{
+    width: 100%;
+
+}
+.left-chat{
+    width: 100%;
+}
 .chat-box{
     width: 100%;
 }
@@ -84,4 +95,26 @@
     border: 1px solid gray;
     height: 2.9em;
     text-indent: 10px;
+}
+
+@media screen and (max-width: 415px){
+    .right-chat{
+     width: 359px;
+    }
+    .left-chat{
+        width: 359px;
+        height: 100vh;
+    }
+    .leftNone .left-chat{
+        display: none;
+    }
+    .rightNone  .right-chat{
+        display: none;
+    }
+     .text input{
+        right: 62px;
+     }
+     .send-button{
+        width: 50px;
+     }
 }

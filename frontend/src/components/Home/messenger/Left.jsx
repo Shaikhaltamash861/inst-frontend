@@ -8,8 +8,12 @@ import ClearSharpIcon from '@mui/icons-material/ClearSharp';
 import axios from 'axios';
 import url from '../../../routes/baseUrl';
 import { ToastContainer, toast } from 'react-toastify';
+import Nav from '../../mobile/Nav'
+import KeyboardBackspaceSharpIcon from '@mui/icons-material/KeyboardBackspaceSharp';
+import { useNavigate } from 'react-router-dom'
 import ChatList from './ChatList';
 function Left() {
+  const navigate=useNavigate()
    const dispatch= useDispatch()
    const [open,setOpen]=useState(false)
    const me= useSelector((state)=>state.user)
@@ -46,14 +50,20 @@ function Left() {
   //  }
 
   return (
+    <>
+    <div className='navbar-mobile' >
+        <Nav>
+            <KeyboardBackspaceSharpIcon onClick={()=>navigate(-1)}/>
+        </Nav>
+      </div>
     <div  className='left-bar'>
         <Dialog open={open} >
          <div className='add'>
            <div className='add-nav'>
-                <p>New message</p>
+             <p>New message</p>
                  <ClearSharpIcon onClick={()=>setOpen(false)} style={{
-                cursor:'pointer',
-                marginRight:'9px'
+                   cursor:'pointer',
+                   marginRight:'9px'
              }}/>
            </div>
            <div className='add-content'>
@@ -70,15 +80,47 @@ function Left() {
         <div className='header'>
              <h3>{me?.username}</h3> 
              <SearchSharpIcon onClick={()=>setOpen(true)} style={{
-                cursor:'pointer',
-                marginRight:'9px'
-             }}/>
+               cursor:'pointer',
+               marginRight:'9px'
+              }}/>
         </div>
         <div className='scroller'>
 
  {
+   conversations?.map((user,id)=>(
+     
+     <ChatList key={id} value={user} onClick={()=>dispatch(setChat({
+       consversationId:user._id
+      }))}/>
+    ))
+}
+ {
     conversations?.map((user,id)=>(
 
+      <ChatList key={id} value={user} onClick={()=>dispatch(setChat({
+        consversationId:user._id
+      }))}/>
+      ))
+}
+ {
+    conversations?.map((user,id)=>(
+
+      <ChatList key={id} value={user} onClick={()=>dispatch(setChat({
+        consversationId:user._id
+      }))}/>
+      ))
+}
+ {
+   conversations?.map((user,id)=>(
+     
+     <ChatList key={id} value={user} onClick={()=>dispatch(setChat({
+       consversationId:user._id
+      }))}/>
+      ))
+}
+ {
+   conversations?.map((user,id)=>(
+     
       <ChatList key={id} value={user} onClick={()=>dispatch(setChat({
         consversationId:user._id
       }))}/>
@@ -88,6 +130,7 @@ function Left() {
 </div>
     
     </div>
+      </>
   )
 }
 
