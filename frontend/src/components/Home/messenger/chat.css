@@ -101,6 +101,7 @@
     .right-chat{
      width: 359px;
     }
+    
     .left-chat{
         width: 359px;
         height: 100vh;
@@ -116,5 +117,12 @@
      }
      .send-button{
         width: 50px;
+     }
+     .chat-box{
+        position: absolute;
+        top: 37px;
+     }
+     .chattings{
+        height: calc( 100vh - 8em  );
      }
 }

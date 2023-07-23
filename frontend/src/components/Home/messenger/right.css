@@ -41,6 +41,9 @@
 }
 @media screen and (max-width: 415px){
     .right-bar .user-nav{
+        position: fixed;
+        border: none;
+    top: 0;
         width: 100%;
     }
 }
