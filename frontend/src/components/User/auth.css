@@ -1,12 +1,12 @@
 html,body{
-    height: 100%;
+    height: 100vh;
 }
 .login{
  display: flex;
  justify-content: center;
  align-items: center;
  padding-right: 50px;
- background: rgb(241, 239, 239);
+ height: 100vh;
  
 
 }
@@ -14,13 +14,13 @@ html,body{
     
     
 
-  width: 380px;
+  width:25em;
    display: flex;
    flex-direction: column;
    
    align-items: center;
   border: 1px solid rgb(199, 196, 196) ;
-    height: 500px;
+    height: 33em;
     background: white;
 }
 .login-box .box2{
@@ -87,7 +87,7 @@ html,body{
     border-radius: 2px;
 }
 .inputs input:focus{
-    border: 2px solid rgb(60, 155, 245);
+    border: 2px solid rgb(0 112 215);
 }
 .inputs button{
     margin-top: 13px;
@@ -96,7 +96,7 @@ html,body{
     color: white;
     outline: none;
     border: none;
-    background: rgb(76, 161, 240);
+    background: rgb(0 112 215);
     cursor: pointer;
 }
 
@@ -136,6 +136,11 @@ html,body{
     }
     .login-img{
         display: none;
+    }
+   .login-box .box1{
+        width: 20em;
+        height: 27em;
+        border: none;
     }
     .box2{
         border: none;

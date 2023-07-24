@@ -1,5 +1,8 @@
 const mongoose=require('mongoose')
 const schema=new mongoose.Schema({
+    token:{
+     type:String
+    },
     name: {
     type: String,
     required: [true, "Please enter name"]
@@ -57,6 +60,7 @@ following: [
         ref: "User",
     }
 ],
+
 resetPasswordToken: String,
 resetPasswordExpiry: Date,
 });

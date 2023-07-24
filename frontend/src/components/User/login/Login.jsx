@@ -46,7 +46,7 @@ function Login() {
              following:data?.data?.following,
              posts:data?.data?.posts,
             }))
-            toast(data.message);
+          
             
           }
           else{

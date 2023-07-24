@@ -23,7 +23,7 @@ function Left() {
          const getUser=async()=>{
           const {data}=await axios.get(`${url}/api/get/conversations?id=${me.id}`)
           setConversations(data)
-          
+          console.log(data)
          }  
          getUser()    
      },[me])
@@ -89,9 +89,7 @@ function Left() {
  {
    conversations?.map((user,id)=>(
      
-     <ChatList key={id} value={user} onClick={()=>dispatch(setChat({
-       consversationId:user._id
-      }))}/>
+     <ChatList key={id} value={user}/>
     ))
 }
  {

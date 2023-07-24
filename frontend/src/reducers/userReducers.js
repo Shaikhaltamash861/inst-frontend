@@ -14,6 +14,7 @@ const initialState={
      users:[],
      chat:'',
      consversationId:'',
+     consversation:'',
      chatList:'',
 
 }
@@ -53,16 +54,20 @@ reducers:{
         state.consversationId=null,
         state.myFollowingPost=null,
         state.users=[],
-        state.chat=null
+        state.chat=null,
+        state.consversation=null
     },
     setChat:(state,action)=>{
           state.chat=action.payload.chat,
         // console.log(action.payload)
-          state.consversationId=action.payload.consversationId
+          state.consversationId=action.payload.consversationId,
+          state.consversation=action.payload.consversation
+        
     },
     setClearChat:(state,action)=>{
         state.chat=action.payload.chat;
-        state.consversationId=action.payload.consversationId
+        state.consversationId=action.payload.consversationId,
+        state.consversation=null
     },
     setRecent:(state,action)=>{
         state.users=action.payload.users

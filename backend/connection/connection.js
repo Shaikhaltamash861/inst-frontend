@@ -1,8 +1,7 @@
 const mongoose =require('mongoose')
+require('dotenv').config()
 
-const URL='mongodb+srv://altamash2c2:instakilogram@cluster0.ejaunc0.mongodb.net/?retryWrites=true&w=majority';
-
-mongoose.connect(URL)
+mongoose.connect(process.env.MONGOURI)
 .then(()=>{
     console.log('database is connected')
 })

@@ -1,5 +1,9 @@
 
 const User =require('../model/userModel')
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+require('dotenv').config()
 const signup= async(req,res)=>{
     const {name,email,password,username}=req.body;
     const isAlready=await User.findOne({
@@ -9,14 +13,24 @@ const signup= async(req,res)=>{
     
        res.status(200).json({message:"User is already registered",status:false})
     }
-    const upload=await User(req.body);
+       const hashPass=bcrypt.hashSync(password, saltRounds)
+        const upload=await User({name,username,email,password:hashPass});
     try {
         const save=await upload.save();
 
         if(!save){
         res.status(200).json({message:"user unable to save",status:false})
         }
-        res.status(200).json({message:"user registerd successfully",status:true,user:save})
+        const token = jwt.sign(
+            { user_id: upload._id, email },
+            process.env.TOKEN_KEY,
+            {
+              expiresIn: "2h",
+            }
+          );
+          
+          upload.token = token;
+        res.status(200).json({message:"user registerd successfully",status:true,user:upload})
 
     } catch (error) {
         
@@ -25,30 +39,36 @@ const signup= async(req,res)=>{
   
 }
 
+
 const signin=async(req,res)=>{
-    const {email,username,password}=req.body;
-   
-        console.log(req.body)
+    const {email,password}=req.body;
     const user = await User.findOne({
         $or: [{ email:email }, { username:email }]
     });
     
     try {
+    
+    if(!user){
         
-        if(user){
-           
-            
-            // const hasPass=await User.findOne({password:password});
-            
-            if(user.password===password){
-                res.status(200).json({data:user,status:true,message:"successfuly loggIn"});
-            }
-            else{
+        res.status(200).json({message:"username/email not found",status:false})
+    }
+        const match = bcrypt.compareSync(password,user?.password)
+
+        if(match){
+            const token = jwt.sign(
+                { user_id: user._id, email },
+                process.env.TOKEN_KEY,
+                {
+                  expiresIn: "2h",
+                }
+              );
+              
+              user.token = token;
+            res.status(200).json({data:user,status:true,message:"successfuly loggIn"});
+        }
+        else{
                 res.status(200).json({message:"wrong password",status:false})
             }
-        }else{
-            res.status(200).json({message:"username/email not found",status:false})
-        }
         
     } catch (error) {
         console.log(error)

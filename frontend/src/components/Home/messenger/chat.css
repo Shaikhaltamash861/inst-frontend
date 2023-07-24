@@ -123,6 +123,7 @@
         top: 37px;
      }
      .chattings{
-        height: calc( 100vh - 8em  );
+        max-height: calc( 100vh - 8em  );
+        min-height: calc( 100vh - 13em );
      }
 }

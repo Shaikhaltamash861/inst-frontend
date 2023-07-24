@@ -46,4 +46,7 @@
     top: 0;
         width: 100%;
     }
+    .current-user{
+        margin-left: 8px;
+    }
 }

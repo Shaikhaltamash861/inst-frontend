@@ -8,6 +8,7 @@ function ChatBox({socket,socketMsg}) {
     const [text,setText]=useState('')
     const user=useSelector((state)=>state.user)
     const receiver=user.chat._id
+    const conversatiion=user.consversation
     const [messages,setMessages]=useState([])
   
     const scrollRef = useRef()
@@ -17,8 +18,10 @@ function ChatBox({socket,socketMsg}) {
     
            if(socketMsg?.senderId){
 
-               // socketMessge && user?._id==&&
-               setMessages(prev=>[...prev,socketMsg])
+               if(conversatiion.senderId===socketMsg.senderId||conversatiion.receiverId===socketMsg.senderId){
+               
+                   setMessages(prev=>[...prev,socketMsg])
+                }
             }
       },[socketMsg])
 

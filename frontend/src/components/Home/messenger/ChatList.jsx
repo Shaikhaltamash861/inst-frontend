@@ -36,7 +36,8 @@ function ChatList({value}) {
   return (
     <div onClick={()=>dispatch(setChat({
         chat:item,
-        consversationId:value._id
+        consversationId:value._id,
+        consversation:value
     }))} >
 
             <div className='user-card'  >
