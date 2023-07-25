@@ -16,6 +16,7 @@ const initialState={
      consversationId:'',
      consversation:'',
      chatList:'',
+     notifications:0
 
 }
 
@@ -55,7 +56,8 @@ reducers:{
         state.myFollowingPost=null,
         state.users=[],
         state.chat=null,
-        state.consversation=null
+        state.consversation=null,
+        state.notifications=0
     },
     setChat:(state,action)=>{
           state.chat=action.payload.chat,
@@ -80,9 +82,16 @@ reducers:{
     //    if(!res){
     //    }
     }
+    ,
+    setNotifications:(state,action)=>{
+        state.notifications=state.notifications+1
+    },
+    clearNotifications:(state,action)=>{
+        state.notifications=0
+    }
   
 
 }
 })
- export const {setClearChat, setUserLoginDetail,setUserLogout,setUpdateImage,setPostOfFloowing,setRecent,setChat,setChatList}=userSlice.actions;
+ export const { clearNotifications,setNotifications,setClearChat, setUserLoginDetail,setUserLogout,setUpdateImage,setPostOfFloowing,setRecent,setChat,setChatList}=userSlice.actions;
  export default userSlice.reducer;

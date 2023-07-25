@@ -115,8 +115,34 @@ function Sidebar() {
             <MovieSharpIcon className='icon'/>
             <h3>Reels</h3>
             </li>
-            <li className='item' onClick={()=>navigator('/direct/inbox')}>
-            <MarkunreadSharpIcon className='icon'/>
+            <li className='item'  onClick={()=>navigator('/direct/inbox')}>
+            <span style={{display:'flex' ,position:'relative'}}>
+
+            <MarkunreadSharpIcon  style={{
+          position:'relative',
+          top:'0'
+        }}className='icon'/>
+        {
+          user?.notifications>0?(
+
+            <span style={{
+              position:'absolute',
+              right:'-4px',
+              top:'-4px',
+              width:'18px',
+              height:'17px',
+              background:'#ff1212',
+              color:'white',
+              textAlign:'center',
+              borderRadius:'50%',
+              fontFamily:'sans-serif',
+              fontSize:'14px'
+            }}>{user?.notifications}</span>
+            ):(
+                <></>
+            )
+          }
+            </span>
             <h3>Messages</h3>
             </li>
             <li className='item'>

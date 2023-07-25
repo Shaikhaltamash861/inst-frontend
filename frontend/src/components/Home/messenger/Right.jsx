@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import ChatBox from './ChatBox'
 import { io } from "socket.io-client";
 import KeyboardBackspaceSharpIcon from '@mui/icons-material/KeyboardBackspaceSharp';
-import { setClearChat } from '../../../reducers/userReducers';
+import { clearNotifications, setClearChat, setNotifications } from '../../../reducers/userReducers';
+import { toast } from 'react-toastify';
 function Right() {
     const socket=useRef()
     const users =useSelector((state)=>state.user)
@@ -13,19 +14,28 @@ function Right() {
     const [onlineUsers,setOnlineUsers]=useState();
     const [status,setStatus]=useState(false)
     const [socketMsg,setScoketMsg]=useState()
+    
     useEffect(()=>{
     
         socket.current=io('https://socket-server-insta.onrender.com');
         socket?.current?.on('getMessage',(data)=>{
-        
-            if(data?.senderId)
-            setScoketMsg({
-                senderId:data.senderId,
-                message:data.message,
-                createdAt:Date.now()
+            if(location.pathname!=='/direct/inbox'){
+              toast('New message')
 
-            })
-           })
+           dispatch(setNotifications())
+          }
+        if(data?.senderId)
+        setScoketMsg({
+            senderId:data.senderId,
+            message:data.message,
+            createdAt:Date.now()
+            
+        })
+    })
+    if(location.pathname==='/direct/inbox'){
+               dispatch(clearNotifications())
+
+           }
     },[])
     
     

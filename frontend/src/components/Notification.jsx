@@ -13,6 +13,7 @@ import {
   import CollectionsOutlinedIcon from '@mui/icons-material/CollectionsOutlined';
   import { addNewPost } from "../actions/postAction";
   import { Input } from '@mui/material';
+  import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
   import './notify.css'
   import { useDispatch, useSelector } from "react-redux";
   import {Cloudinary} from "@cloudinary/url-gen";
@@ -159,12 +160,16 @@ return (
               fontSize:'100px',
               paddingBottom:'20px'
             }}/> */}
-             <img src={image} className="gall" style={{
+            <InsertPhotoIcon className="galls" style={{
+              width:'100px',
+              fontSize:'100px',
+              paddingBottom:'20px'}}/>
+             {/* <img src={image} className="gall" style={{
               width:'100px',
               height:'100px',
               fontSize:'100px',
               paddingBottom:'20px'
-            }}/>
+            }}/> */}
            <input type="file" n name="file" id="file" class="inputfile"
            accept="image/*"
            onChange={handleChange}

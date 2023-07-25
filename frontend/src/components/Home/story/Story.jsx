@@ -17,48 +17,7 @@ function Story() {
 
                 </div>
             </li>
-            <li >
-                <img src={user?.avatar}/>
-                <div className='wrapper'>
-                <p className='demo'>{user?.username}</p>
-
-                </div>
-            </li>
-            <li >
-                <img src={user?.avatar}/>
-                <div className='wrapper'>
-                <p className='demo'>{user?.username}</p>
-
-                </div>
-            </li>
-            <li >
-                <img src={user?.avatar}/>
-                <div className='wrapper'>
-                <p className='demo'>{user?.username}</p>
-
-                </div>
-            </li>
-            <li >
-                <img src={user?.avatar}/>
-                <div className='wrapper'>
-                <p className='demo'>{user?.username}</p>
-
-                </div>
-            </li>
-            <li >
-                <img src={user?.avatar}/>
-                <div className='wrapper'>
-                <p className='demo'>{user?.username}</p>
-
-                </div>
-            </li>
-            <li >
-                <img src={user?.avatar}/>
-                <div className='wrapper'>
-                <p className='demo'>{user?.username}</p>
-
-                </div>
-            </li>
+            
            {/* {
             friends?.following?.map((dost)=>(
                 <ul>

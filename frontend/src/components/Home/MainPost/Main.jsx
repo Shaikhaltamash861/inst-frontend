@@ -66,7 +66,7 @@ const post=useSelector((state)=>state.user.myFollowingPost)
       {/* <HomeIcon fontSize="small" /> */}
       </Nav>
       <div className='story'>
-        <Story/>
+        {/* <Story/> */}
 
       </div>
       {

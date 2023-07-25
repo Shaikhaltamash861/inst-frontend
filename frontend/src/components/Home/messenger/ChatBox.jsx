@@ -26,6 +26,16 @@ function ChatBox({socket,socketMsg}) {
       },[socketMsg])
 
     const send=async()=>{
+        if(!text){
+            return;
+        }
+        const newMessage={
+               senderId:user.id,
+                message:text,
+                createdAt:Date.now()
+            }
+            setMessages([...messages,newMessage])
+
         socket?.current?.emit('sendMessage',{
             senderId:user.id,
             receiverId:receiver,
@@ -37,15 +47,15 @@ function ChatBox({socket,socketMsg}) {
             message:text
         })
         if(data.success){
-            setMessages([...messages,data.message])
+            setText('')
+            
         }
         
-        setText('')
     }
     const getMessages=async()=>{
         const {data}=await axios.get(`${url}/api/retrive/messages?conversationId=${user.consversationId}`)
          setMessages(data)
-         
+        
     }
     useEffect(()=>{
           getMessages()

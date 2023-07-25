@@ -91,12 +91,12 @@ label{
 .inputfile + label {
    
     border-radius: 3px;
-    background-color: rgb(43, 106, 223);
+    background-color: rgb(13 135 255);
     display: inline-block;
 }
 .gall{
 
-    color: rgb(230, 229, 229);
+    color: rgb(255, 255, 255);
 }
 .inputfile:focus + label,
 .inputfile + label:hover {

@@ -42,12 +42,33 @@ function ChatList({value}) {
 
             <div className='user-card'  >
             <img src={item?.avatar}/>
+            <div className='user-intel' style={{
+                display:'flex',
+                justifyContent:'space-between',
+                width:'100%'
+            }}>
+
             <div className='user-info'>
                 <h4>{item?.name}</h4>
                 <div className='wrap-msg'>
 
                 <p>{lastMessage}</p>
                 </div>
+            </div>
+            <div style={{width:'100%',display:'flex',justifyContent:'end',paddingRight:'6px'}}>
+
+            {/* <span style={{
+                
+                width:'18px',
+                height:'17px',
+                background:'rgb(22 93 185)',
+                color:'white',
+                textAlign:'center',
+                borderRadius:'50%',
+                fontFamily:'sans-serif',
+                fontSize:'14px'
+            }}></span> */}
+            </div>
             </div>
          </div>
 

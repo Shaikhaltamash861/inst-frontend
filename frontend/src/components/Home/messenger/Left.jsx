@@ -92,38 +92,7 @@ function Left() {
      <ChatList key={id} value={user}/>
     ))
 }
- {
-    conversations?.map((user,id)=>(
 
-      <ChatList key={id} value={user} onClick={()=>dispatch(setChat({
-        consversationId:user._id
-      }))}/>
-      ))
-}
- {
-    conversations?.map((user,id)=>(
-
-      <ChatList key={id} value={user} onClick={()=>dispatch(setChat({
-        consversationId:user._id
-      }))}/>
-      ))
-}
- {
-   conversations?.map((user,id)=>(
-     
-     <ChatList key={id} value={user} onClick={()=>dispatch(setChat({
-       consversationId:user._id
-      }))}/>
-      ))
-}
- {
-   conversations?.map((user,id)=>(
-     
-      <ChatList key={id} value={user} onClick={()=>dispatch(setChat({
-        consversationId:user._id
-      }))}/>
-    ))
-}
     
 </div>
     
