@@ -1,5 +1,4 @@
 # Logs
-/node_modules
 logs
 *.log
 npm-debug.log*
@@ -9,8 +8,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-server
+/server
 *.local
+/node_modules
 
 # Editor directories and files
 .vscode/*
