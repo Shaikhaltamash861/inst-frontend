@@ -1,0 +1,24 @@
+.container{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.container .leftbar{
+    /* flex: 10%; */
+}
+.container .rightbar{
+    display: flex;
+    /* justify-content: start;
+    border:1px solid rgb(179, 179, 179);;
+    border-left: none;
+     */
+}
+@media screen and (max-width: 393px) {
+ .leftbar{
+    position: fixed;
+    bottom: 0;
+ }
+
+}

@@ -1,0 +1,196 @@
+.profile{
+  width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+
+}
+.profile::-webkit-scrollbar{
+    width: 0;
+}
+.profile .first{
+    
+    
+
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    gap: 30px;
+    padding: 40px;
+}
+.first .me{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.first .about{
+    display: flex;
+    gap: 20px;
+}
+.first .details{
+    display: flex;
+    gap: 20px;
+}
+.details p{
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+.details button{
+    background: black;
+    width: 100px;
+    border: none;
+    font-family: sans-serif;
+    font-weight: 400;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+.details .f-btn{
+    background: rgb(12, 118, 218);
+    width: 100px;
+    height: 25px;
+    border: none;
+    font-family: sans-serif;
+    font-weight: 400;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+.about p{
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+}
+.myfile {
+    /* width: 0.1px;
+    height: 0.1px;
+    opacity: 0; */
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.first img{
+    
+        border-radius: 50%;
+        width: 190px;
+        height: 190px;
+        background-size: cover;
+        object-fit: cover;
+        image-rendering: -webkit-optimize-contrast;
+ }
+ .details{
+     /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+}
+.details button{
+    height: 20px;
+}
+
+.profile  .post-card-box{
+
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    
+    
+}
+.profile .post-cards{
+    margin: 0;
+    /* width:1120px; */
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    /* display: grid;
+    grid-template-columns: repeat(3,1fr); */
+}
+.profile .post-card{
+    cursor: pointer;
+    padding-top: 10px;
+    padding-left: 4px;
+}
+.post-cards .post-card img{
+    width: 338px;
+    height: 350px;
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
+    
+}
+
+/* .first .myfile + img {
+    
+    border-radius: 3px;
+    background-color: rgb(43, 106, 223);
+    display: inline-block;
+}
+
+.first .myfile:focus + img,
+.myfile + img:hover {
+    background-color:rgb(43, 106, 223);
+}  */
+.drawer{
+    
+    height: 50vh;
+}
+.drawer ul{
+    padding-left: 20px;
+    padding-top: 10px;
+    list-style: none;
+    font-family: sans-serif;
+    font-size: 17px;
+
+}
+.drawer ul li{
+    padding-top: 28px;
+    cursor: pointer;
+}
+@media screen and (max-width: 414px) {
+    .post-cards{
+      width: 100%;
+      flex-direction: column;
+      display: flex;
+      
+      
+    }
+    .first{
+        display: flex;
+       /* flex-direction: column; */
+       justify-content: center;
+       padding: 22px;
+    }
+    .first img{
+        width: 113px;
+        height:113px;
+        border-radius: 50%;
+    }
+      .first .me{
+        /* margin-top: -15px; */
+      }
+.tag{
+    width: 0;
+}
+  .profile .post-cards {
+    margin: 0;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+.first .details{
+    display: flex;
+    flex-direction: column;
+}
+.profile .post-card-box{
+   padding: 0;
+}
+.post-cards .post-card img {
+    width: 114px;
+    height: 125px;
+    image-rendering: -webkit-optimize-contrast;
+}
+}

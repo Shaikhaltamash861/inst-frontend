@@ -1,0 +1,20 @@
+.login-box .box2{
+    border:1px solid rgb(199, 196, 196) ;
+    text-align: center;
+    font-family: sans-serif;
+    background: white;
+   margin-top: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 75px;
+}
+.box2 span{
+    color:  rgb(76, 161, 240);
+    cursor: pointer;
+}
+@media screen and (max-width: 415px){
+    .login-box p{
+       
+    }
+}

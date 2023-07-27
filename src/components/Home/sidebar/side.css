@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    background: white;
+}
+.full{
+    width: 490px;
+   position: relative;
+    display: flex;
+}
+.sidebar{
+    width: 246px;
+    height: 100vh;
+    border: 1px solid rgb(179, 179, 179);
+    list-style: none;
+}
+.tag{
+    width: 80px;
+    height: 100vh;
+    border: 1px solid rgb(179, 179, 179);
+    list-style: none; 
+}
+.tag h3{
+    display: none;
+}
+.sidebar .logo{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    padding-top: 30px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+.sidebar .logo img{
+    width: 120px;
+}
+.tag .logo{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    padding-top: 30px;
+    padding-left: 20px;
+}
+.tag .logo img{
+    width: 31px;
+}
+
+.list{
+    padding: 24px;
+}
+.list .item{
+    display: flex;
+    align-items: center;
+    
+    /* border: 1px solid gray; */
+    height: 56px;
+    cursor: pointer;
+}
+.menu {
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    position: relative;
+    
+    padding-left: 24px;
+    padding-bottom: 6px;
+    
+}
+.menu h3{
+    font-size: 16px;
+    padding:9px;
+    font-weight: 200;
+}
+.menu .m{
+    font-size: 25px;
+}
+
+.item .icon{
+    font-size: 30px;
+}
+.item img{
+    width: 43px;
+    height: 41px;
+    image-rendering: -webkit-optimize-contrast;
+    
+    border-radius: 50%;
+}
+.tag .item img{
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+.item img:active{
+    border: 1px solid red;
+}
+.item h3{
+    padding: 8px;
+    padding-bottom: 1px;
+    
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+}
+.item h3:focus{
+}
+@media screen and (max-width: 415px) {
+    .list{
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        bottom: 0;
+        background: white;
+        justify-content: space-between;
+        align-items: center;
+        height: 12px;
+        width: 88%;
+    }
+    .list h3{
+        display: none;
+    }
+    .item:nth-child(3) {
+        background: red;display: none;
+
+      }
+    .item:nth-child(4) {
+        background: red;display: none;
+
+      }
+    .item:nth-child(6) {
+        background: red;display: none;
+
+      }
+
+    .sidebar{
+        width: 100%;
+        height: 70px;
+        border: 1px solid rgb(179, 179, 179);
+        list-style: none; 
+    }
+    .sidebar .logo{
+        display: none;
+    }
+    .menu{
+        display: none;
+    }
+   .tag .logo{
+        display: none;
+    }
+
+}

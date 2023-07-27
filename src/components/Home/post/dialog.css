@@ -1,0 +1,144 @@
+.box{
+
+    width: 600px;
+    height: 510px;
+    /* background: rgb(112, 112, 112); */
+}
+.box .navs{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+    padding-right: 4px;
+    cursor: pointer;
+    /* background: red; */
+}
+.box .childs{
+    display: flex;
+}
+.box .left-img{
+    
+    width: 50%;
+    /* height: 100%; */
+}
+.box .left-img img{
+    width: 100%;
+    height:470px ;
+}
+.box .right-user{
+  position: relative;
+    width: 50%;
+    border: 1px solid rgb(228, 228, 228);
+    /* background: red; */
+}
+
+.box .right-user .user-detail{
+    
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+.box .right-user .user-detail p{
+    padding-left: 10px;
+    font-family: sans-serif;
+    font-weight:600;
+    font-size: 14px;
+}
+.right-user .user{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 12px;
+}
+.right-user .user .username{
+    margin-left: 5px;
+    font-family: sans-serif;
+    font-weight:600;
+    font-size: 14px;
+}
+.right-user .user .caption{
+    font-family: sans-serif;
+    font-size: 13px;
+    padding-left: 10px;
+}
+.right-user .user img{
+    margin-left: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; 
+}
+.box .right-user .user-detail img{
+    /* padding-left: 10px; */
+    margin-left: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    
+}
+.box .right-user .comments{
+    overflow-y: scroll;
+    
+    display: flex;
+    flex-direction: column;
+    height: 367px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    
+}
+
+.box .right-user .comments::-webkit-scrollbar{
+    width: 0;
+}
+.box .right-user .comment{
+    /* position: fixed;
+    bottom: 64px; */
+    display: flex;
+    
+    
+}
+.comment input{
+    /* position: relative; */
+    width: 262px;
+    height: 50px;
+    outline: none;
+    border: none;
+    text-indent: 20px;
+    
+}
+.comment button{
+    background: none;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(4, 106, 223);
+}
+.right-user .all-comments{
+  margin-top: 20px;
+}
+@media screen and (max-width: 415px){
+    .box{
+        width: 324px;
+        height: 474px;
+    }
+    .box .left-img{
+        width: 100%;
+        height: 90%;
+      
+    }
+    .box .right-user{
+        width: 100%;
+        
+    }
+    .comment{
+        display: flex;
+        position: fixed;
+        bottom: 0;
+
+      }
+      .comment input{
+        width: 311px;
+      }
+    .box .childs{
+        flex-direction: column;
+    }
+}

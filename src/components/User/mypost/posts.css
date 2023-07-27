@@ -1,0 +1,11 @@
+.my-card{
+    width: 344px;
+    /* height:100vh; */
+}
+.my-card .my-post-img{
+    width: 100%;
+}
+.my-post-img img{
+    width: 100%;
+    height: 500px;
+}

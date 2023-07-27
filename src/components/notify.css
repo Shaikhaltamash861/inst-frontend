@@ -1,0 +1,213 @@
+.dialog{
+    width: 400px;
+    height: 500px;
+    /* background: rgb(73, 70, 70); */
+}
+.bigDialog{
+    width: 500px;
+    height: 450px;
+    /* background: rgb(51, 48, 48); */
+}
+.dialog .title{
+    color: black;
+}
+.bigDialog .title{
+    display: flex;
+    justify-content: space-between ;
+   padding-left: 10px;
+   padding-right: 10px;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    font-family: sans-serif;
+    /* color: rgb(245, 245, 245); */
+    height: 39px;
+    font-size: 18px;
+}
+
+.title .share{
+    color: rgb(10, 104, 245);
+    /* display: flex;
+    justify-content: right; */
+     /* width: 300px; */
+     font-size: 15px;
+     font-family: sans-serif;
+     font-weight: 600;
+     cursor: pointer;
+}
+.share:hover{
+    font-size: 16px;
+}
+.content .boxx{
+    display: flex;
+}
+.boxx .left{
+    width: 50%;
+    /* height: calc( 100% - 39px ); */
+    height: 410px;
+}
+.left .img{
+    width: 100%;
+    height: 100%;
+}
+.box .right{
+    width: 50%;
+    height: 410px;
+}
+.right input{
+    
+    display: flex;
+    width: 241px;
+    /* border: none; */
+    font-family: sans-serif;
+    font-size: 14px;
+    word-wrap: break-word;
+    outline: none;
+    margin-left: 4px;
+    /* padding-left: 10px; */
+    height: 38px;
+   
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+label{
+    /* padding-top: 20px; */
+    font-size: 16px;
+    cursor: pointer;
+    font-family: sans-serif;
+    /* font-weight: 600; */
+    padding: 4px 20px 0 20px;
+
+    padding: 10px 10px 2px 10px;
+    padding-bottom: 7px;
+    color: rgb(212, 212, 212);
+    /* height: 40px; */
+}
+.inputfile + label {
+   
+    border-radius: 3px;
+    background-color: rgb(13 135 255);
+    display: inline-block;
+}
+.gall{
+
+    color: rgb(255, 255, 255);
+}
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color:rgb(43, 106, 223);
+}
+.dialog .title{
+    display: flex;
+    /* justify-content: space-around; */
+    padding-left: 10px;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    font-family: sans-serif;
+    /* color: white; */
+    height: 39px;
+    font-size: 18px;
+    
+}
+.title:first-child(:first):hover{
+    color: rgb(0, 102, 255);
+
+}
+.dialog .content{
+    display: flex;
+    /* width: 100%; */
+    flex-direction: column;
+    height:calc( 100% - 45px );
+    /* border: 1px solid red; */
+    align-items: center;
+    
+    justify-content: center;
+}
+.content .img{
+    width: 100%;
+    height:99% ;
+}
+.dialog .people{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+height: 61px;
+
+padding-left: 20px;
+padding-right: 20px;
+cursor: pointer;
+}
+.people:hover{
+    background: rgb(224, 224, 224);
+}
+.people .img-name{
+    display: flex;
+    align-items: center;
+}
+.img-name h2{
+    padding-left: 6px;
+}
+.people button{
+    height: 34px;
+    background: rgb(33, 92, 221);
+    width: 100px;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.people h2{
+    font-family: sans-serif;
+    font-size: 1rem;
+
+}
+.people img{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+
+}
+.back{
+    display: flex;
+    justify-content: end;
+}
+@media screen and (max-width: 415px){
+    .dialog{
+        width: 300px;
+        height: 520px;
+       
+    }
+    .bigDialog{
+         width: 300px;
+    }
+    .bigDialog  .title{
+        /* width: 100%;
+        justify-content: space-between;
+        padding-right: 10px;
+        margin-right: 10px; */
+    }
+    .bigDialog .content{
+        width: 100%;
+    }
+    .bigDialog .boxx{
+        flex-direction: column;
+        overflow-y: scroll;
+    }
+    .bigDialog .boxx .left{
+        width:324px;
+    }
+    .bigDialog .boxx .left img{
+        width: 100%;
+    }
+    .bigDialog .boxx .right input{
+        width: 100%;
+        text-indent: 10px;
+       
+    }
+}

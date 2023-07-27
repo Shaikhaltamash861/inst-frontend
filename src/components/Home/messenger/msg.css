@@ -1,0 +1,15 @@
+.messenger{
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.navbar-mobile{
+    position: fixed;
+    top: 1px;
+}
+@media screen and (max-width: 415px){
+    .mobile-bar{
+        display: none;
+    }
+}

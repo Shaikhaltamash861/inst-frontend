@@ -1,0 +1,148 @@
+html,body{
+    height: 100vh;
+}
+.login{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding-right: 50px;
+ height: 100vh;
+ 
+
+}
+.login-box .box1{
+    
+    
+
+  width:25em;
+   display: flex;
+   flex-direction: column;
+   
+   align-items: center;
+  border: 1px solid rgb(199, 196, 196) ;
+    height: 33em;
+    background: white;
+}
+.login-box .box2{
+    border:1px solid rgb(199, 196, 196) ;
+    text-align: center;
+    font-family: sans-serif;
+    background: white;
+   margin-top: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 75px;
+}
+.box2 span{
+    color:  rgb(76, 161, 240);
+    cursor: pointer;
+}
+.box1 .options{
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    padding-top: 20px;
+    align-items: center;
+}
+.options .or{
+    color: rgb(128, 128, 128);
+}
+.options p{
+    color:  rgb(76, 161, 240);
+    font-size: 13px;
+    font-weight:700;
+    padding-top: 17px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.login .login-box{
+    width: 380px;
+    height: 600px;
+    margin-top: 20px;
+  
+    display: flex;
+    flex-direction: column;
+    
+    /* border: 1px solid rgb(199, 196, 196); */
+
+    
+
+}
+.login-box .inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 280px;
+    
+}
+.inputs input{
+    height: 35px;
+    outline: none;
+    color: black;
+    text-indent: 10px;
+    border: 1px solid rgb(170, 170, 170);
+   background-color: rgb(204, 211, 214);
+    margin-top: 13px;
+    border-radius: 2px;
+}
+.inputs input:focus{
+    border: 2px solid rgb(0 112 215);
+}
+.inputs button{
+    margin-top: 13px;
+    height: 38px;
+    border-radius: 3px;
+    color: white;
+    outline: none;
+    border: none;
+    background: rgb(0 112 215);
+    cursor: pointer;
+}
+
+.login-box .logo{
+    width: 180px;
+    padding-top: 43px;
+}
+.login .login-img{
+    
+}
+ .login .login-img {
+    
+    height: 490px;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-right: 20px;
+  }
+ .login-img .image1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    
+  }
+ .login-img .image2 {
+    position: absolute;
+    top: 25px;
+    left: 156px;
+
+  }
+ @media screen and (max-width: 450px){
+    .login-box{
+        box-sizing: content-box;
+        display: flex;
+        justify-content: center;
+     padding-left: 50px;
+    }
+    .login-img{
+        display: none;
+    }
+   .login-box .box1{
+        width: 20em;
+        height: 27em;
+        border: none;
+    }
+    .box2{
+        border: none;
+    }
+  }

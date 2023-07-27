@@ -1,0 +1,27 @@
+.post-section{
+    /* width: 48%; */
+    /* border: 1px solid red; */
+   overflow-y: scroll;
+   height: 100vh;
+   overflow-x: hidden;
+}
+.story{
+    width: 430px;
+}
+.post-section::-webkit-scrollbar{
+    display: none;
+    width: 0;
+}
+.post{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgb(189, 189, 189) ;
+}
+@media screen and (max-width: 415px){
+    .post{
+        margin-bottom: 57px;
+    }
+}

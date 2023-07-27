@@ -1,0 +1,129 @@
+.page{
+    width: 100%;
+    display: flex;
+}
+.right-chat{
+    width: 100%;
+
+}
+.left-chat{
+    width: 100%;
+}
+.chat-box{
+    width: 100%;
+}
+.chattings{
+    width: 100%;
+
+    overflow-y: scroll;
+    height: calc( 100vh - 10em  );
+    
+
+}
+.chattings::-webkit-scrollbar{
+    width: 0;
+}
+.chattings .message{
+    padding-left:15px ;
+    padding-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
+}
+.chattings .send{
+    display: flex;
+    justify-content: end;
+
+}
+.chattings p{
+    padding-left: 12px;
+    padding-right: 6px;
+    padding-top: 10px;
+    padding-bottom: 9px;
+    border-radius: 4px;
+    font-family: sans-serif;
+    max-width: 280px;
+}
+.chattings .send p{
+    
+    width:fit-content ;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: rgb(10, 133, 248);
+    color: white;
+    
+}
+.receive p{
+    background: rgb(172, 172, 172);
+    width: fit-content;
+    
+}
+
+.chat-box .text{
+    position: fixed;
+    width: 65%;
+    bottom: 1px;
+    right: 0;
+    background: white;
+    height: 4em;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+.send-button{
+    color: rgb(255, 255, 255);
+    background: rgb(255, 153, 0);
+    position: fixed;
+    right: 10px;
+    cursor: pointer;
+    font-family: sans-serif;
+    width: 80px;
+    height: 40px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius:10px ;
+}
+.text input{
+    width: 56%;
+    min-width: 280px;
+    margin-left: 25px;
+    border-radius: 26px;
+    position: fixed;
+    right: 102px;
+    outline: none;
+    border: 1px solid gray;
+    height: 2.9em;
+    text-indent: 10px;
+}
+
+@media screen and (max-width: 415px){
+    .right-chat{
+     width: 359px;
+    }
+    
+    .left-chat{
+        width: 359px;
+        height: 100vh;
+    }
+    .leftNone .left-chat{
+        display: none;
+    }
+    .rightNone  .right-chat{
+        display: none;
+    }
+     .text input{
+        right: 62px;
+     }
+     .send-button{
+        width: 50px;
+     }
+     .chat-box{
+        position: absolute;
+        top: 37px;
+     }
+     .chattings{
+    
+        min-height: calc( 100vh - 8em );
+     }
+}
