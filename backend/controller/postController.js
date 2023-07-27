@@ -1,8 +1,6 @@
 const Post=require('../model/postModel');
 const User=require('../model/userModel')
 const express=require('express')
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
 const router=express.Router();
 const post=async(req,res)=>{
     
@@ -34,8 +32,7 @@ const post=async(req,res)=>{
     
     
 }
-// router.post('/post',upload.single('avatar'),post())
-// Get all post
+
 const getPost=async(req,res)=>{
     
     try {

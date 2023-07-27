@@ -11,7 +11,7 @@ const signup= async(req,res)=>{
     if(isAlready)
     {
     
-       res.status(200).json({message:"User is already registered",status:false})
+      return res.status(200).json({message:"User is already registered",status:false})
     }
        const hashPass=bcrypt.hashSync(password, saltRounds)
         const upload=await User({name,username,email,password:hashPass});
@@ -19,7 +19,7 @@ const signup= async(req,res)=>{
         const save=await upload.save();
 
         if(!save){
-        res.status(200).json({message:"user unable to save",status:false})
+       return res.status(200).json({message:"user unable to save",status:false})
         }
         const token = jwt.sign(
             { user_id: upload._id, email },
@@ -30,11 +30,11 @@ const signup= async(req,res)=>{
           );
           
           upload.token = token;
-        res.status(200).json({message:"user registerd successfully",status:true,user:upload})
+       return res.status(200).json({message:"user registerd successfully",status:true,user:upload})
 
     } catch (error) {
         
-        res.status(210).json({message:error._message,status:false})
+       return res.status(210).json({message:error._message,status:false})
     }
   
 }
@@ -48,32 +48,32 @@ const signin=async(req,res)=>{
     
     try {
     
-    if(!user){
+    if(user){
         
-        res.status(200).json({message:"username/email not found",status:false})
-    }
-        const match = bcrypt.compareSync(password,user?.password)
-
+        const match =  bcrypt.compareSync(password,user?.password)
+        
         if(match){
             const token = jwt.sign(
                 { user_id: user._id, email },
                 process.env.TOKEN_KEY,
                 {
-                  expiresIn: "2h",
+                    expiresIn: "2h",
                 }
               );
               
               user.token = token;
-            res.status(200).json({data:user,status:true,message:"successfuly loggIn"});
+           return res.status(200).json({data:user,status:true,message:"successfuly loggIn"});
         }
         else{
-                res.status(200).json({message:"wrong password",status:false})
-            }
+           return res.status(200).json({message:"wrong password",status:false})
+        }
         
-    } catch (error) {
+    }
+    return res.status(200).json({message:"username/email not found",status:false})
+} catch (error) {
         console.log(error)
 
-        res.status(210).json({error:"something went wrong",status:false})
+       return res.status(210).json({error:"something went wrong",status:false})
         
     }    
 
