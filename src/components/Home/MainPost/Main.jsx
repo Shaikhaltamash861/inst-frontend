@@ -9,13 +9,25 @@ import { setPostOfFloowing } from '../../../reducers/userReducers'
 import Nav from '../../mobile/Nav'
 import messengerIcon from '../../../assests/icons/messenger.png'
 import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
+import arrow from '../../../assests/icons/arrow.png'
+import { SwipeableDrawer } from '@mui/material';
 import url from '../../../routes/baseUrl'
+import Suggestion from '../../User/suggetion/Suggestion'
 function Main() {
   const dispatch=useDispatch()
   const [posts,setPost]=useState([])
+  const [randomPost,setRandom]=useState([])
+  const [notify,setNotify]=useState(false)  
 const id=useSelector((state)=>state.user.id)
 
 const post=useSelector((state)=>state.user.myFollowingPost)
+const getRandom=async()=>{
+  const {data}=await axios.get(`${url}/api/random/post?id=${id}`)
+  if(data.success){
+    
+    setRandom(data.posts)
+  }
+}
   
   const getPosts=async()=>{
     const {data}=await axios.post(`${url}/api/get/posts/following`,{
@@ -33,16 +45,31 @@ const post=useSelector((state)=>state.user.myFollowingPost)
   }
   useEffect(() => {
      getPosts()
+     getRandom()
   }, [id])
   
   return (<>
     <div className='post-section'>
       <Nav>
-      <FavoriteBorderSharpIcon style={{
+      <FavoriteBorderSharpIcon onClick={()=>setNotify(true)} style={{
         marginRight:'10px',
         cursor:'pointer'
+        
       }}/>
-      <div style={{display:'flex' ,position:'relative'}}>
+        <SwipeableDrawer open={notify}  onClose={()=>setNotify(false)}
+        anchor='bottom'  disableSwipeToOpen={true}>
+          <div className='heights'>
+            <div className='notify-bar'>
+               <img onClick={()=>setNotify(false)} src={arrow}/>
+               <p>Notification</p>
+            </div>
+            <div>
+              <Suggestion/>
+            </div>
+          </div>
+
+          </SwipeableDrawer>
+      {/* <div style={{display:'flex' ,position:'relative'}}>
 
         <img style={{
           width:'25px',
@@ -62,11 +89,11 @@ const post=useSelector((state)=>state.user.myFollowingPost)
         fontSize:'14px'
       }}>5</span>
         </div>
-    
+     */}
       {/* <HomeIcon fontSize="small" /> */}
       </Nav>
       <div className='story'>
-        {/* <Story/> */}
+        <Story/>
 
       </div>
       {
@@ -80,7 +107,11 @@ const post=useSelector((state)=>state.user.myFollowingPost)
             <Post key={i} post={val} />
             ))
           }
-        
+        {
+          randomPost?.map((val,i)=>(
+            <Post key={i} post={val} followType={true} />
+          ))
+        }
 
       </div>
          

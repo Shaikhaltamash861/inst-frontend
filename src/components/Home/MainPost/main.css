@@ -1,12 +1,12 @@
 .post-section{
-    /* width: 48%; */
-    /* border: 1px solid red; */
+    max-width: 630px;
+    width: 100%;
    overflow-y: scroll;
    height: 100vh;
    overflow-x: hidden;
 }
 .story{
-    width: 430px;
+    
 }
 .post-section::-webkit-scrollbar{
     display: none;
@@ -18,10 +18,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-right: 1px solid rgb(189, 189, 189) ;
+   
+    width: 630px;
+
 }
 @media screen and (max-width: 415px){
     .post{
+        width: fit-content;
         margin-bottom: 57px;
+    }
+    .notify-bar{
+        height: 60px;
+       
+        display: flex;
+        align-items: center;
+    }
+    .notify-bar p{
+        font-weight: 600;
+        font-family: sans-serif;
+        margin-left: 10px;
+    }
+    .notify-bar img{
+        margin-left: 5px;
     }
 }

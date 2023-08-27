@@ -17,7 +17,7 @@ import { toast } from 'react-toastify'
 import PostDialog from './PostDialog'
 import url from '../../../routes/baseUrl'
 
-function Post({post}) {
+function Post({post,followType}) {
   const dispatch=useDispatch()
   const user=useSelector((state)=>state.user)
   const [comment,setComment]=useState('')
@@ -59,6 +59,25 @@ function Post({post}) {
      }
 
   }
+  const follow= async(hisId)=>{
+   
+    const ids={
+      myId:user.id,
+      yourId:hisId
+    }
+    const {data}=await axios.post(`${url}/api/follow/user`
+    ,ids
+    )
+  if(data.success){
+    toast(data.message)
+    
+  }
+  else{
+    toast.error(data.message)
+  }
+    // setFollower(!follower)
+    
+  }
   return (
     <div className='post-card'>
 
@@ -73,6 +92,26 @@ function Post({post}) {
                 
 
             <span ></span><span>{moment(post.createdAt).startOf('hour').fromNow()}</span>
+            <span style={{
+              paddingLeft:'6px'
+            }}>{
+              followType?(
+
+                <button style={{
+                  background:'rgb(23, 109, 238)',
+                  borderRadius:'5px',
+                  color:'white',
+                  paddingLeft:'15px',
+                  paddingRight:'15px',
+                  paddingBottom:'5px',
+                  paddingTop:'5px',
+                  outline:'none',
+                  border:'none',
+                  cursor:'pointer'
+                }} onClick={()=>follow(post?.bucket[0]?._id)}>follow</button>
+              ):(<></>)
+              }
+              </span>
             </span>
     
         </div>

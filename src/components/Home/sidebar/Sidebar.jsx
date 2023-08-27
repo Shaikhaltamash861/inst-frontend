@@ -12,6 +12,7 @@ import MarkunreadSharpIcon from '@mui/icons-material/MarkunreadSharp';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
+import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
 import Dialog from '@mui/material/Dialog';
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,10 +29,12 @@ function Sidebar() {
   const [searchInput,setSearchInput]=useState(false)
   const [open,setOpen]=useState(false)
   const [layout,setLayout]=useState(false)
-  const [openSetting,setOpenSetting]=useState(false)       
+  const [openSetting,setOpenSetting]=useState(false)  
+     
   const user=useSelector((state)=>state.user)
   const username=user.username
   const myImg=user.avatar;
+  
   const handleScreen=()=>{
 
     
@@ -145,7 +148,7 @@ function Sidebar() {
             </span>
             <h3>Messages</h3>
             </li>
-            <li className='item'>
+            <li className='item' onClick={()=>setNotify(!notify)}>
             <FavoriteBorderOutlinedIcon className='icon'/>
             <h3>Notifications</h3>
             </li>
@@ -153,8 +156,17 @@ function Sidebar() {
             <AddBoxOutlinedIcon className='icon'/>
             <h3 >Create</h3>
             </li>
+            {/* <li className='item'>
+            <FavoriteBorderSharpIcon style={{
+        marginRight:'10px',
+        cursor:'pointer'
+        
+      }}/>
+            </li> */}
             <li className='item' onClick={()=>navigator('/profile')}>
-                <img src={myImg} alt='profile'/>
+                <img src={myImg} style={{
+                  border:'1px solid red'
+                }} />
             <h3>Profile</h3>
             </li>
           
@@ -177,6 +189,7 @@ function Sidebar() {
             <SearchBar/>
             ):(<></>)
           }
+        
           </div>
   )
 }

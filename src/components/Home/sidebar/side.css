@@ -107,6 +107,9 @@ body{
 }
 .item h3:focus{
 }
+.heights{
+    height: 90vh;
+}
 @media screen and (max-width: 415px) {
     .list{
         display: flex;
@@ -118,6 +121,9 @@ body{
         align-items: center;
         height: 12px;
         width: 88%;
+    }
+    .heights{
+        height: 100vh;
     }
     .list h3{
         display: none;

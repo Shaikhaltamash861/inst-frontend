@@ -1,0 +1,97 @@
+.suggest{
+    padding-left: 50px;
+    /* padding-top: 20px; */
+    margin-top: 100px;
+    height: calc( 100vh - 100px );
+    overflow-y: scroll;
+    }
+    .suggest::-webkit-scrollbar{
+        width: 0;
+    }
+    .suggest h6{
+        padding-bottom:24px ;
+        font-family: sans-serif;
+        color: rgb(104, 103, 103);
+        font-size: 20px;
+    }
+    .suggest .suggest-list{
+            width: 230px;
+           display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: sans-serif;
+        margin-top: 14px;
+
+    }
+    .suggest-list .img-name{
+        display:  flex;
+        align-items: center;
+
+    }
+    .img-name p{
+        padding-left: 6px;
+        font-size: 13px;
+    font-weight: 600;
+    }
+    .suggest-list img{
+        border-radius: 50%;
+        width: 40px;
+        object-fit: cover;
+        height: 40px;
+    }
+    .suggest-list button{
+        padding-left: 6px;
+        background: white;
+        outline: none;
+        border: none;
+        font-weight: 600;
+        color: rgb(23, 109, 238);
+        cursor: pointer;
+
+    }
+    .suggest .my-account{
+          display: flex;
+          align-items: center;
+          height: 80px;
+    }
+    .my-account h4{
+        padding-left: 7px;
+        font-family: sans-serif;
+        font-size: 15px;
+        color: #666666;
+    }
+    .my-account p{
+        color: gray;
+        
+    }
+    .my-account img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    @media screen and (max-width: 415px) {
+      .suggest{
+        padding-left: 5px;
+        padding-right: 14px;
+        margin-top: 10px;
+        height:99vh;
+      }
+     .suggest .suggest-list{
+         width: 100%;
+         padding-right: 5px;
+      }
+      .my-account{
+        /* display: none; */
+        height: 1px;
+      }
+      .suggest-list button{
+        background: rgb(23, 109, 238);
+        color: white;
+        padding: 6px;
+        padding-right: 8px;
+        /* border: 1px; */
+        border-radius: 2px;
+        font-weight: 400;
+      }
+       }
