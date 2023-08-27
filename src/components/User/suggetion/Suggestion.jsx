@@ -12,7 +12,7 @@ function Suggestion() {
   const userId=user.id
   
   const getUser=async()=>{
-    const {data}=await axios.get(`${url}/api/retrive/suggestions?userId=${userId}`)
+    const {data}=await axios.get(`${url}/api/retrive/suggestions?id=${userId}`)
     setUsers(data.users)
   }
   useEffect(()=>{
