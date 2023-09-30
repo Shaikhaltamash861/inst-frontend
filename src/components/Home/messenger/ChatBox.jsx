@@ -25,7 +25,8 @@ function ChatBox({socket,socketMsg}) {
             }
       },[socketMsg])
 
-    const send=async()=>{
+    const send=async(e)=>{
+        e.preventDefault()
         if(!text){
             return;
         }
