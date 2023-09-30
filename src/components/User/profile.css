@@ -148,6 +148,10 @@
     cursor: pointer;
 }
 @media screen and (max-width: 414px) {
+    .profile{
+        /* max-height: 90vh; */
+        /* height: calc( 100vh - 200px ); */
+    }
     .post-cards{
       width: 100%;
       flex-direction: column;
@@ -168,6 +172,10 @@
     }
       .first .me{
         /* margin-top: -15px; */
+      }
+      .fix{
+        position: fixed;
+        top: 0;
       }
 .tag{
     width: 0;

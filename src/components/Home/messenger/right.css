@@ -1,6 +1,6 @@
 .right-bar{
     
-   
+   height: 100vh;
 }
 .right-bar .user-nav{
     height: 4em;
@@ -8,6 +8,8 @@
     width: 900px;
     display: flex;
     align-items: center;
+    position: sticky;
+    top: 0;
 }
 .current-user{
     display: flex;
@@ -41,9 +43,10 @@
 }
 @media screen and (max-width: 415px){
     .right-bar .user-nav{
-        /* position: fixed; */
+        position: sticky;
+        top: 0;
+
         border: none;
-    top: 0;
         width: 100%;
     }
     .current-user{

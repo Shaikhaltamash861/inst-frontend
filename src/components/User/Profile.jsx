@@ -83,7 +83,7 @@ function Profile() {
     
   return (
     <>
-      <Nav>
+      <Nav className="fix">
          <MenuIcon onClick={()=>setDrower(!drower)}/>
          <SwipeableDrawer open={drower} onClose={()=>setDrower(false)}
         anchor='bottom'  disableSwipeToOpen={true} >
