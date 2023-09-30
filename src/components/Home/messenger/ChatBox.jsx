@@ -54,7 +54,7 @@ function ChatBox({socket,socketMsg}) {
             message:text
         })
         if(data.success){
-            setText('')
+            // setText('')
             
         }
         

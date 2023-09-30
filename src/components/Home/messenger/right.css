@@ -5,12 +5,12 @@
 .right-bar .user-nav{
     height: 4em;
     box-shadow: 1px 4px 60px 4px gray;
-    border-bottom: 1px solid  rgb(196, 195, 195);
+    /* border-bottom: 1px solid  rgb(196, 195, 195); */
     width: 900px;
     display: flex;
     align-items: center;
-    position: sticky;
-    top: 0;
+    /* position: sticky;
+    top: 0; */
 }
 .current-user{
     display: flex;
@@ -44,8 +44,8 @@
 }
 @media screen and (max-width: 415px){
     .right-bar .user-nav{
-        position: sticky;
-        top: 0;
+        /* position: sticky;
+        top: 0; */
 
         border: none;
         /* width: 100%; */
