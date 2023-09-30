@@ -16,7 +16,7 @@
     width: 100%;
 
     overflow-y: scroll;
-    height: calc( 100vh - 10em  );
+    height: calc( 100vh - 7em  );
     
 
 }
@@ -72,7 +72,7 @@
 }
 .send-button{
     color: rgb(255, 255, 255);
-    background: rgb(255, 153, 0);
+    background: rgb(21, 120, 233);
     position: fixed;
     right: 10px;
     cursor: pointer;
@@ -101,7 +101,9 @@
     .right-chat{
      width: 359px;
     }
-    
+    .chattings{
+        height: calc( 100vh - 8em );
+    }
     .left-chat{
         width: 359px;
         height: 100vh;

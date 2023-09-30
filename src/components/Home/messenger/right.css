@@ -3,7 +3,7 @@
    
 }
 .right-bar .user-nav{
-    height: 4.6em;
+    height: 4em;
     border-bottom: 1px solid  rgb(196, 195, 195);
     width: 900px;
     display: flex;
@@ -41,7 +41,7 @@
 }
 @media screen and (max-width: 415px){
     .right-bar .user-nav{
-        position: fixed;
+        /* position: fixed; */
         border: none;
     top: 0;
         width: 100%;

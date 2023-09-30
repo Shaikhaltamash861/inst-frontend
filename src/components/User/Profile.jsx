@@ -122,7 +122,7 @@ function Profile() {
         </div>
 
         <div className='about'>
-          <p > <span style={{
+          <p > <span onClick={()=>navigate('/post')} style={{
             fontWeight:'600',
             marginRight:'2px'
           }}>
@@ -169,7 +169,7 @@ function Profile() {
     <Followings  open={handleOpen} setOpen={setHandleOpen}/>
           </div>
    {/* </div> */}
-          // </>
+           </>
   )
 }
 
