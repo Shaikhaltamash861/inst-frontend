@@ -24,9 +24,15 @@ function ChatBox({socket,socketMsg}) {
                 }
             }
       },[socketMsg])
-
+      const handleKeyPress=(e)=>{
+        
+         if(e.key=='Enter'){
+           send(e);
+         }
+     
+       }
     const send=async(e)=>{
-        e.preventDefault()
+        e.preventDefault();
         if(!text){
             return;
         }
@@ -48,7 +54,7 @@ function ChatBox({socket,socketMsg}) {
             message:text
         })
         if(data.success){
-            setText(' ')
+            setText('')
             
         }
         
@@ -83,7 +89,7 @@ function ChatBox({socket,socketMsg}) {
         </div>
         <div className='text'>
             <input type='text' placeholder='Write something ....' value={text} onChange={(e)=>setText(e.target.value)}/>
-            <p className='send-button' onClick={send}>send</p>
+            <p className='send-button'  type='submit' onKeyDown={handleKeyPress}  onClick={send}>send</p>
         </div>
     </div>
   )

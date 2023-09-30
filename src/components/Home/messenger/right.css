@@ -4,6 +4,7 @@
 }
 .right-bar .user-nav{
     height: 4em;
+    box-shadow: 1px 4px 60px 4px gray;
     border-bottom: 1px solid  rgb(196, 195, 195);
     width: 900px;
     display: flex;
@@ -47,7 +48,7 @@
         top: 0;
 
         border: none;
-        width: 100%;
+        /* width: 100%; */
     }
     .current-user{
         margin-left: 8px;
